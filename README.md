@@ -1,2 +1,2 @@
 # Pyrre
-Pyramid solitaire / Pyramidipasianssi
+**Pyr**amid solitai**re** / Pyramidipasianssi
