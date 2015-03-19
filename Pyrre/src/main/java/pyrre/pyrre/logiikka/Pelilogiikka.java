@@ -9,12 +9,16 @@ import pyrre.pyrre.kortit.Korttipakka;
  * @author Jenni
  */
 public class Pelilogiikka {
+    private Korttipakka pakka;
+    private Pelialusta pelialusta;
 
 //Käynnistää pelin
     public void pelinKaynnistys() {
-        Korttipakka pakka = teePelipakka();
-        Kortti[][] pelipoyta = LuoUusiPelialusta(pakka);
-        tulostaPoyta(pelipoyta);
+        pakka = teePelipakka(); 
+        pelialusta = luoPelialusta();
+        System.out.println("Pelialusta luotu");
+        pelialusta.tulostaPoyta();
+        
     }
 
     //Luo uuden pelipakan ja sekoittaa pakan kortit
@@ -26,21 +30,14 @@ public class Pelilogiikka {
         return pakka;
     }
     
-    public Kortti[][] LuoUusiPelialusta(Korttipakka pakka) {
-        Pelialusta alusta = new Pelialusta(pakka);
-        Kortti[][] pelipoyta = alusta.getPoyta();
-        return pelipoyta;
-    }
+    //Luo uuden pelialustan ja asettaa kortit pöydälle
+    public Pelialusta luoPelialusta() {
+    Pelialusta pelialusta = new Pelialusta(pakka);
+    pelialusta.asetaKortitPoydalle();
+    return pelialusta;
+    }    
+    
 
-      public void tulostaPoyta(Kortti[][] poyta){
-         for (int rivi = 0; rivi < 7; ++rivi) {
-            for (int sarake = 0; sarake <7; ++sarake) {
-                System.out.print(poyta[rivi][sarake].toString());
-            }
-             System.out.println("");
-         }
-    }
-
-    }
+   }
 
 

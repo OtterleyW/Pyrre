@@ -32,9 +32,15 @@ public class KorttipakkaTest {
         assertEquals("Risti 4", kortti.toString());
      }
      
-     public void nostaPaalimmainen() {
+     public void nostaPaalimmainenNostaaKortin() {
          Kortti kortti = pakka.nostaPaalimmainen();
          assertEquals("Risti A", kortti.toString());
      }
+     
+     public void nostaPaalimmainenPoistaaKortinPakasta(){
+       pakka.nostaPaalimmainen();
+       assertEquals(51, pakka.TarkistaPakanKoko());
+     }
+     
   
 }

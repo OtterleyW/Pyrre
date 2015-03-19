@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package pyrre.pyrre;
+import java.util.ArrayList;
+import pyrre.pyrre.kortit.Kortti;
+import pyrre.pyrre.kortit.Korttipakka;
 import pyrre.pyrre.logiikka.Pelilogiikka;
 /**
  *
@@ -12,9 +15,11 @@ import pyrre.pyrre.logiikka.Pelilogiikka;
 public class Paaohjelma {
    
     public static void main(String[] args) {
-      Pelilogiikka uusiPeli = new Pelilogiikka();
-      
-      uusiPeli.pelinKaynnistys();
+        Pelilogiikka peli = new Pelilogiikka();
+        
+        peli.pelinKaynnistys();
+
+        
 
     }
 

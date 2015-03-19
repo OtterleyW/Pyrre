@@ -42,5 +42,10 @@ public class KorttiTest {
         kortti.asetaUusiPaikka("poyta");
         assertEquals("poyta", kortti.getPaikka());
     }
+    
+    public void luoTyhjaKorttiToimii() {
+        Kortti tyhja = kortti.LuoTyhjaKortti();
+        assertEquals("tyha", kortti.toString());
+    }
 
 }

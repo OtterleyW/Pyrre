@@ -10,12 +10,16 @@ public class Kortti {
     public static final int PATA = 3;
     public static final int TYHJA = 4;
 
-    public static final String[] MAAT = {"Risti", "Ruutu", "Hertta", "Pata"};
-    public static final String[] ARVOT = {"-", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+    public static final String[] MAAT = {" Risti", " Ruutu", "Hertta", "  Pata", "     "};
+    public static final String[] ARVOT = {"  ", "A ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10", "J ", "Q ", "K "};
 
     private int arvo;
     private int maa;
     private String paikka;
+    
+    //Pöydällä olevien korttien paikka
+    private int rivi;
+    private int sarake;
 
     //Jokaisella kortilla on sekä maa että arvo, lisäksi asetetaan paikka, joka oletuksena on pakka
     public Kortti(int arvo, int maa) {
@@ -24,8 +28,8 @@ public class Kortti {
         this.paikka = "pakka";
     }
     
-    public Kortti TyhjaKortti() {
-        Kortti tyhja = new Kortti(4,0);
+    public Kortti LuoTyhjaKortti() {
+        Kortti tyhja = new Kortti(0,4);
         tyhja.asetaUusiPaikka("tyhja");
         return tyhja;
     }
@@ -53,6 +57,11 @@ public class Kortti {
     //Asettaa kortille uuden paikan (esim. pöytä, poistopakka)
     public void asetaUusiPaikka(String paikka) {
         this.paikka = paikka;
+    }
+    
+    public void asetaPaikkaPoydalla(int rivi, int sarake){
+        this.rivi = rivi;
+        this.sarake = sarake;
     }
   
 }

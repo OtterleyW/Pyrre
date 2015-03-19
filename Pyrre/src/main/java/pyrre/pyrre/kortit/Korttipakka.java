@@ -5,10 +5,11 @@ import java.util.Collections;
 
 public class Korttipakka {
 
-    //Luodaan tyhjä lista korttipakkaa varten
+    //Luodaan tyhjät listat korttipakkaa ja poistopakkaa varten
 
     private ArrayList<Kortti> pakka = new ArrayList<Kortti>();
-
+    private ArrayList<Kortti> poistopakka = new ArrayList<Kortti>();
+    
     //Luodaan korttipakka, joka sisältää 52 korttia
     public void LuoKorttipakka() {
         for (int i = 0; i <= 3; i++) {
@@ -41,6 +42,10 @@ public class Korttipakka {
         Kortti kortti = pakka.get(0);
         pakka.remove(0);
         return kortti;
+    }
+    
+    public ArrayList<Kortti> getPoistopakka(){
+        return poistopakka;
     }
 
 }
