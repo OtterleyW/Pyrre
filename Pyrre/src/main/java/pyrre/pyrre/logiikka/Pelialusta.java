@@ -18,21 +18,21 @@ public class Pelialusta {
     
     public Pelialusta(Korttipakka pakka) {
         this.pakka = pakka;
-        this.pelialusta = new Kortti[7][7];
+        this.pelialusta = new Kortti[7][13];
                
     }
     //Asetetaan kortin pyramidin muotoon pöydälle. Taulukon tyhjiin paikkoihin luodaan "tyhjäkortti"
     public void asetaKortitPoydalle() {
         for(int i=0; i < 7; i++){
-            for(int j=0; j < 7; j++){
-              if(   
-                i == 0 && j == 3 || 
-                i == 1 && j == 2 || i == 1 && j == 4 || 
-                i == 2 && j >= 2 && j <= 4 || 
-                i == 3 && j >= 1 && j <= 2 || i == 3 && j >= 4 && j <= 5 || 
-                i == 4 && j >= 1 && j <= 5 || 
-                i == 5 && j >= 0 && j <= 2 || i == 5 && j >= 4 && j <= 6 || 
-                i==6
+            for(int j=0; j < 13; j++){
+              if( 
+                i==0 && j==6 ||
+                i==1 && j==5 || i==1 && j==7 ||
+                i==2 && j==4 || i==2 && j==6 || i==2 && j==8 ||
+                i==3 && j==3 || i==3 && j==5 || i==3 && j==7 || i==3 && j==9 ||
+                i==4 && j==2 || i==4 && j==4 || i==4 && j==6 || i==4 && j==8 || i==4 && j==10 ||
+                i==5 && j==1 || i==5 && j==3 || i==5 && j==5 || i==5 && j==7 || i==5 && j==9 || i==5 && j==11 || 
+                i==6 && j==0 || i==6 && j==2 || i==6 && j==4 || i==6 && j==6 || i==6 && j==8 || i==6 && j==10 || i==6 && j==12
                 ){
                   asetaKortti(i,j);
               } 

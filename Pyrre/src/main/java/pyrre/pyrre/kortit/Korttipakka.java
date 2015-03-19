@@ -47,5 +47,7 @@ public class Korttipakka {
     public ArrayList<Kortti> getPoistopakka(){
         return poistopakka;
     }
+    
+    
 
 }
