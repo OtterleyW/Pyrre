@@ -35,7 +35,21 @@ public class Pelilogiikka {
     Pelialusta pelialusta = new Pelialusta(pakka);
     pelialusta.asetaKortitPoydalle();
     return pelialusta;
-    }    
+    }
+    
+    //Laskee valitut kortit yhteen, jos summa on 13, siirretään kortti poistopakkaan
+    public void valitseKortit(int rivi1, int sarake1, int rivi2, int sarake2){
+        Kortti kortti1 = pelialusta.valitseKortti(rivi1, sarake1);
+        Kortti kortti2 = pelialusta.valitseKortti(rivi2, sarake2);
+        
+        int summa = kortti1.getArvo() + kortti2.getArvo();
+        
+        if(summa == 13){
+            pakka.asetaPoistopakkaan(kortti1);
+            pakka.asetaPoistopakkaan(kortti2);
+        }
+        
+    }
     
 
    }

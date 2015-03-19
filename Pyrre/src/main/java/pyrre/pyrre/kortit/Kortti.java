@@ -59,6 +59,7 @@ public class Kortti {
         this.paikka = paikka;
     }
     
+    //Asettaa pöydällä olevalle kortille rivin ja sarakkeen kokonaislukuna
     public void asetaPaikkaPoydalla(int rivi, int sarake){
         this.rivi = rivi;
         this.sarake = sarake;

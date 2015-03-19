@@ -23,29 +23,34 @@ public class KorttiTest {
 
     @Test
     public void KorttiToStringToimii() {
-        assertEquals("Pata 10", kortti.toString());
+        assertEquals("  Pata 10", kortti.toString());
     }
     
+    @Test
     public void KorttiGetArvoToimii() {
-        assertEquals("10", kortti.getArvo());
+        assertEquals(10, kortti.getArvo());
     }
     
+    @Test
     public void KorttiGetMaaToimii() {
-        assertEquals("Pata", kortti.getMaa());
+        assertEquals(3, kortti.getMaa());
     }
     
+    @Test
     public void KorttiGetPaikkaPalauttaaOletuksenaPakka(){
         assertEquals("pakka", kortti.getPaikka());
     }
     
+    @Test
     public void asetaUusiPaikkaToimii() {
         kortti.asetaUusiPaikka("poyta");
         assertEquals("poyta", kortti.getPaikka());
     }
     
+    @Test
     public void luoTyhjaKorttiToimii() {
         Kortti tyhja = kortti.LuoTyhjaKortti();
-        assertEquals("tyha", kortti.toString());
+        assertEquals("        ", tyhja.toString());
     }
 
 }

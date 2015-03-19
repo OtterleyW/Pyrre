@@ -21,7 +21,7 @@ public class Pelialusta {
         this.pelialusta = new Kortti[7][13];
                
     }
-    //Asetetaan kortin pyramidin muotoon pöydälle. Taulukon tyhjiin paikkoihin luodaan "tyhjäkortti"
+    //Asetetaan kortit pyramidin muotoon pöydälle. Taulukon tyhjiin paikkoihin luodaan "tyhjäkortti" null-arvojen välttämiseksi. 
     public void asetaKortitPoydalle() {
         for(int i=0; i < 7; i++){
             for(int j=0; j < 13; j++){
@@ -43,23 +43,34 @@ public class Pelialusta {
     }
     }
     
+    //Metodi joka nostaa korttipakan päälimmäisen kortin ja asettaa sen pöydälle
     public void asetaKortti(int i, int j){
         Kortti kortti = pakka.nostaPaalimmainen();
         kortti.asetaPaikkaPoydalla(i, j);
         pelialusta[i][j] = kortti;
     }
     
+    //Metodi joka asettaa tyhjän kortin päydän tyhjään kohtaan
     public void asetaTyhjaKortti(int i, int j){
         Kortti kortti = luoTyhjaKortti();
         pelialusta[i][j] = kortti;
     }
     
+    //Luo tyhjän kortin
     public Kortti luoTyhjaKortti(){
         Kortti tyhja = new Kortti(0,4);
         tyhja = tyhja.LuoTyhjaKortti();
         return tyhja;
     }
     
+    //Palauttaa pöydän tietyllä rivillä ja sarakkeella olevan kortin
+    public Kortti valitseKortti(int i, int j){
+        Kortti kortti = pelialusta[i][j];
+        return kortti;
+    }
+            
+    
+    //Tulostaa pöydän
     public void tulostaPoyta(){
         for(int i = 0; i<pelialusta.length; i++){
             for(int j = 0; j<pelialusta[i].length; j++){

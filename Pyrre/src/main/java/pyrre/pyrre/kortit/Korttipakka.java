@@ -25,16 +25,15 @@ public class Korttipakka {
         int koko = pakka.size();
         return koko;
     }
-
-    //Palauttaa indeksissä i olevan kortin
-    public Kortti palautaTiettyKortti(int i) {
-        Kortti kortti = pakka.get(i);
-        return kortti;
-    }
     
     //Sekoittaa korttipakan
     public void sekoitaKorttipakka() {
         Collections.shuffle(pakka);
+    }
+    
+    //palauttaa korttipakan ArrayListina
+    public ArrayList<Kortti> getPakka() {
+        return pakka;
     }
     
     //nostaa pakan päälimmäisen eli indeksissä 0 olevan kortin ja poistaa sen sitten pakasta
@@ -44,6 +43,14 @@ public class Korttipakka {
         return kortti;
     }
     
+    
+    //poistaa kortin pakasta ja lisää sen poistopakkaan
+    public void asetaPoistopakkaan(Kortti kortti) {
+        pakka.remove(kortti);
+        poistopakka.add(kortti);
+    }
+    
+    //palauttaa poistopakan (pelin kannalta ei merkitystä)
     public ArrayList<Kortti> getPoistopakka(){
         return poistopakka;
     }
