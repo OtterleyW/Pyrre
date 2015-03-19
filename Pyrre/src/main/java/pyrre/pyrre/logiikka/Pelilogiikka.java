@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pyrre.pyrre.logiikka;
 
 import java.util.ArrayList;
-import pyrre.pyrre.Kortti;
-import pyrre.pyrre.Korttipakka;
+import pyrre.pyrre.kortit.Kortti;
+import pyrre.pyrre.kortit.Korttipakka;
 
 /**
  *
@@ -15,11 +10,14 @@ import pyrre.pyrre.Korttipakka;
  */
 public class Pelilogiikka {
 
+//Käynnistää pelin
     public void pelinKaynnistys() {
         Korttipakka pakka = teePelipakka();
-        asetaKortitPoydalle(pakka);
+        Kortti[][] pelipoyta = LuoUusiPelialusta(pakka);
+        tulostaPoyta(pelipoyta);
     }
 
+    //Luo uuden pelipakan ja sekoittaa pakan kortit
     public Korttipakka teePelipakka() {
         Korttipakka pakka = new Korttipakka();
         pakka.LuoKorttipakka();
@@ -27,22 +25,22 @@ public class Pelilogiikka {
 
         return pakka;
     }
-
-    public void asetaKortitPoydalle(Korttipakka pakka) {
-        for (int i = 0; i <= 28; i++) {
-
-            Kortti kortti = pakka.palautaTiettyKortti(i);
-
-            String paikka = "poyta";
-            kortti.asetaUusiPaikka(paikka);
-
-        }
-        
-        
+    
+    public Kortti[][] LuoUusiPelialusta(Korttipakka pakka) {
+        Pelialusta alusta = new Pelialusta(pakka);
+        Kortti[][] pelipoyta = alusta.getPoyta();
+        return pelipoyta;
     }
-    
-    
 
-   
+      public void tulostaPoyta(Kortti[][] poyta){
+         for (int rivi = 0; rivi < 7; ++rivi) {
+            for (int sarake = 0; sarake <7; ++sarake) {
+                System.out.print(poyta[rivi][sarake].toString());
+            }
+             System.out.println("");
+         }
+    }
 
-}
+    }
+
+
