@@ -12,3 +12,5 @@ Korttien pöydälle asettamisen vääntämistä ja hieman pelilogiikan tekemist�
 **20.03.2015** 2h
 Sain pitraportin säädettyä toimimaan. Luokkakaavion piirtelyä ja luokkien miettimistä.
 
+**25.03.2015** 2h
+Testien kirjoittamista. 

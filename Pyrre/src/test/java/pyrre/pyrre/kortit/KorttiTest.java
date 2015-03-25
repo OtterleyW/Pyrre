@@ -41,21 +41,13 @@ public class KorttiTest {
         assertEquals(3, kortti.getMaa());
     }
     
-    @Test
-    public void KorttiGetPaikkaPalauttaaOletuksenaPakka(){
-        assertEquals("pakka", kortti.getPaikka());
-    }
-    
-    @Test
-    public void asetaUusiPaikkaToimii() {
-        kortti.asetaUusiPaikka("poyta");
-        assertEquals("poyta", kortti.getPaikka());
-    }
     
     @Test
     public void luoTyhjaKorttiToimii() {
         Kortti tyhja = kortti.LuoTyhjaKortti();
         assertEquals("        ", tyhja.toString());
     }
+   
+    
 
 }

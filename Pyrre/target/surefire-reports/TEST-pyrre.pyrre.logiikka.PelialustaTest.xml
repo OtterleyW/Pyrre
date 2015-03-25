@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="pyrre.pyrre.kortit.KorttipakkaTest" time="0.05" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="pyrre.pyrre.logiikka.PelialustaTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_05\jre\bin"/>
@@ -61,10 +61,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="pyrre.pyrre.kortit.KorttipakkaTest" name="sekoitaKorttipakkaToimii" time="0.01"/>
-  <testcase classname="pyrre.pyrre.kortit.KorttipakkaTest" name="nostaPaalimmainenToimii" time="0"/>
-  <testcase classname="pyrre.pyrre.kortit.KorttipakkaTest" name="asetaPoistopakkaanToimii" time="0"/>
-  <testcase classname="pyrre.pyrre.kortit.KorttipakkaTest" name="TarkistaPakanKokoToimii" time="0"/>
-  <testcase classname="pyrre.pyrre.kortit.KorttipakkaTest" name="nostaPaalimmainenPoistaaKortinPakasta" time="0"/>
-  <testcase classname="pyrre.pyrre.kortit.KorttipakkaTest" name="LuoKorttipakkaTekee52Korttia" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelialustaTest" name="asetaKortitPoydalleAsettaaTyhjanKortin" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelialustaTest" name="valitseKorttiValitseeKortin" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelialustaTest" name="luoTyhjaKorttiLuoKortin" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelialustaTest" name="asetaKorttiAsettaaKortin" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelialustaTest" name="asetaKortitPoydalleAsettaaOikeanKortin" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelialustaTest" name="asetaKortitPoydallePienentaaKorttipakkaa" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelialustaTest" name="pelialustallaOnPakka" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelialustaTest" name="asetaTyhjaKorttiAsettaaKortin" time="0"/>
 </testsuite>

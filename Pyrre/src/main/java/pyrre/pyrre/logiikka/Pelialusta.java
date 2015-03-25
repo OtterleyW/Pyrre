@@ -46,7 +46,6 @@ public class Pelialusta {
     //Metodi joka nostaa korttipakan päälimmäisen kortin ja asettaa sen pöydälle
     public void asetaKortti(int i, int j){
         Kortti kortti = pakka.nostaPaalimmainen();
-        kortti.asetaPaikkaPoydalla(i, j);
         pelialusta[i][j] = kortti;
     }
     
@@ -78,6 +77,12 @@ public class Pelialusta {
             }
             System.out.println("");
         }
+    }
+    
+    //palauttaa pelialustan
+    
+    public Kortti[][] getPelialusta(){
+        return this.pelialusta;
     }
     
 }
