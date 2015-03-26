@@ -38,8 +38,25 @@ public class Korttipakka {
     
     //nostaa pakan päälimmäisen eli indeksissä 0 olevan kortin ja poistaa sen sitten pakasta
     public Kortti nostaPaalimmainen() {
+        if (pakka.size() == 0){
+            Kortti kortti = new Kortti(0,4);
+            kortti = kortti.LuoTyhjaKortti();
+            return kortti;
+        }
         Kortti kortti = pakka.get(0);
         pakka.remove(0);
+        return kortti;
+                
+    }
+    
+    //nostaa pakan päälimmäisen eli indeksissä 0 olevan kortin mutta ei poista sita
+    public Kortti nostaPaalimmainenPoistamatta() {
+        if (pakka.size() == 0){
+            Kortti kortti = new Kortti(0,4);
+            kortti = kortti.LuoTyhjaKortti();
+            return kortti;
+        }
+        Kortti kortti = pakka.get(0);
         return kortti;
     }
     
@@ -50,11 +67,15 @@ public class Korttipakka {
         poistopakka.add(kortti);
     }
     
+    
     //palauttaa poistopakan (pelin kannalta ei merkitystä)
     public ArrayList<Kortti> getPoistopakka(){
         return poistopakka;
     }
     
-    
+    //Poistetaan kortti
+    public void poistaKortti(Kortti kortti) {
+        pakka.remove(kortti);
+    }
 
 }

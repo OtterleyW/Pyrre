@@ -11,14 +11,15 @@ import pyrre.pyrre.kortit.Korttipakka;
 public class Pelilogiikka {
     private Korttipakka pakka;
     private Pelialusta pelialusta;
-
+    private Pelisaannot saannot;
+    
 //Käynnistää pelin
     public void pelinKaynnistys() {
         this.pakka = teePelipakka(); 
         this.pelialusta = luoPelialusta();
         System.out.println("Pelialusta luotu");
         this.pelialusta.tulostaPoyta();
-        
+        this.saannot = new Pelisaannot(pelialusta);
     }
 
     //Luo uuden pelipakan ja sekoittaa pakan kortit
@@ -42,11 +43,41 @@ public class Pelilogiikka {
     return pelialusta;
     }
     
-    //Laskee valitut kortit yhteen
-    public void valitseKortit(int rivi1, int sarake1, int rivi2, int sarake2){
-        Kortti kortti1 = pelialusta.valitseKortti(rivi1, sarake1);
-        Kortti kortti2 = pelialusta.valitseKortti(rivi2, sarake2);
+    //Valitsee pelattavat kortit ja tarkastaa niiden summan, 
+    //jos summa on 13 muuttuu korttien paikka
+    public void valitseKortit(Kortti kortti1, Kortti kortti2){
         
+        if(this.saannot.voikoKortinValita(kortti1) && this.saannot.voikoKortinValita(kortti2)){
+            if(kortti1.getArvo()+kortti2.getArvo() == 13){
+                muutaPaikka(kortti1);
+                muutaPaikka(kortti2);
+                
+            }
+        }
+        
+    }
+    
+    //Jos korttein summa on 13 poistetaan kortit pelistä. 
+    //Pöydällä olevan kortin tilalle asetetaan tyhjä kortti, pakassa oleva kortti poistetaan
+    public void muutaPaikka(Kortti kortti){
+        if(kortti.getPaikka() == "poyta"){
+            int i = kortti.getRivi();
+            int j = kortti.getSarake();
+            
+            pelialusta.asetaTyhjaKortti(i, j);
+            kortti.asetaPaikka("poistettu");
+        }
+        
+        if(kortti.getPaikka() == "pakka"){
+            pakka.poistaKortti(kortti);
+        }
+            
+    }
+    
+    //Siirtää pakan päälimmäisen kortin poistopakkaan
+    public void selaaPakkaa(){
+        Kortti kortti = pakka.nostaPaalimmainen();
+        pakka.asetaPoistopakkaan(kortti);
     }
     
 

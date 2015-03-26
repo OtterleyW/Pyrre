@@ -15,11 +15,17 @@ public class Kortti {
 
     private int arvo;
     private int maa;
+    private String paikka;
+    
+    //Pöydällä olevien korttien paikat
+    private int rivi;
+    private int sarake;
     
     //Jokaisella kortilla on sekä maa että arvo, lisäksi asetetaan paikka, joka oletuksena on pakka
     public Kortti(int arvo, int maa) {
         this.arvo = arvo;
         this.maa = maa;
+        this.paikka = "pakka";
     }
     
     public Kortti LuoTyhjaKortti() {
@@ -41,6 +47,32 @@ public class Kortti {
     public int getMaa() {
         return maa;
     }
+    
+    //asettaa paikan pöydällä 
+    public void asetaPaikkaPoydalla(int i, int j){
+        this.rivi = i;
+        this.sarake = j;
+        this.paikka = "poyta";
+    }
+    
+    //Haetaan paikat pöydällä
+    public int getRivi(){
+        return this.rivi;
+    }
+    
+    public int getSarake(){
+        return this.sarake;
+    }
+    
+    public void asetaPaikka(String paikka){
+        this.paikka = paikka;
+    }
+    public String getPaikka(){
+        return this.paikka;
+    }
+    
+
+    
     
   
 }

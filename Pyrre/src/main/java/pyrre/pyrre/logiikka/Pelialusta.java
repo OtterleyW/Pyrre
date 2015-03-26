@@ -47,6 +47,7 @@ public class Pelialusta {
     public void asetaKortti(int i, int j){
         Kortti kortti = pakka.nostaPaalimmainen();
         pelialusta[i][j] = kortti;
+        kortti.asetaPaikkaPoydalla(i, j);
     }
     
     //Metodi joka asettaa tyhjän kortin päydän tyhjään kohtaan

@@ -13,4 +13,7 @@ Korttien pöydälle asettamisen vääntämistä ja hieman pelilogiikan tekemist�
 Sain pitraportin säädettyä toimimaan. Luokkakaavion piirtelyä ja luokkien miettimistä.
 
 **25.03.2015** 2h
-Testien kirjoittamista. 
+Testien kirjoittamista.
+
+**26.03.2015** 3,5h
+Testien kirjoittamista lisää. Pelisäännöt luokan tekemeninen.

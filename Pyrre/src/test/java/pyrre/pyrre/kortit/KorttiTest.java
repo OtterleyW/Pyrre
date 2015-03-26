@@ -48,6 +48,39 @@ public class KorttiTest {
         assertEquals("        ", tyhja.toString());
     }
    
+    @Test 
+    public void asetaPaikkaPoydallaToimii(){
+        kortti.asetaPaikkaPoydalla(2, 5);
+        assertEquals("poyta", kortti.getPaikka());
+    }
     
+    @Test
+    public void getRiviPalauttaaRivin(){
+        kortti.asetaPaikkaPoydalla(1, 1);
+        assertEquals(1, kortti.getRivi());
+    }
+    
+    @Test
+    public void getSarakaPalauttaaSarakkeen(){
+        kortti.asetaPaikkaPoydalla(0, 1);
+        assertEquals(1, kortti.getSarake());
+    }
+    
+    @Test
+    public void asetaPaikkaToimii(){
+        kortti.asetaPaikka("testi");
+        assertEquals("testi", kortti.getPaikka());
+    }
+    
+    @Test
+    public void getPaikkaPalauttaaOletuksenaPakka(){
+        assertEquals("pakka", kortti.getPaikka());
+    }
+    
+    @Test
+    public void getPakkaPalauttaaPaikkanaPoytaKunKorttiPoydalla(){
+        kortti.asetaPaikkaPoydalla(5, 9);
+        assertEquals("poyta", kortti.getPaikka());
+    }
 
 }

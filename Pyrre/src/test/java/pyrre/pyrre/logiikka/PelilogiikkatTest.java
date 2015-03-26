@@ -23,6 +23,7 @@ public class PelilogiikkatTest {
     private Korttipakka pakka;
     private Pelialusta pelialusta;
     private Pelilogiikka logiikka;
+    private Pelisaannot saannot;
     
     public PelilogiikkatTest() {
     }
@@ -62,4 +63,8 @@ public class PelilogiikkatTest {
         
          assertEquals(false, onkoViereinen);
     }
+    
+
+    
+
 }

@@ -1,5 +1,6 @@
 package pyrre.pyrre.kortit;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -76,5 +77,23 @@ public class KorttipakkaTest {
          
          assertEquals(1, pakka.getPoistopakka().size());
      }
+     
+     @Test
+     public void nostaPaalimmainenKorttiPalauttaaTyhjanJosPakkaTyhja() {
+         assertEquals(0, pakka.nostaPaalimmainen().getArvo());
+     }
     
+     @Test
+     public void poistaKorttiToimii(){
+         pakka.LuoKorttipakka();
+         Kortti kortti = pakka.nostaPaalimmainenPoistamatta();
+         pakka.poistaKortti(kortti);
+         
+         assertEquals(51, pakka.TarkistaPakanKoko());
+     }
+     
+     @Test
+     public void nostaPoistamattaPalauttaaTyhjanJosPakkaTyhja(){
+         assertEquals(0,pakka.nostaPaalimmainenPoistamatta().getArvo());
+     }
 }
