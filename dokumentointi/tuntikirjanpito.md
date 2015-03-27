@@ -17,3 +17,6 @@ Testien kirjoittamista.
 
 **26.03.2015** 3,5h
 Testien kirjoittamista lisää. Pelisäännöt luokan tekemeninen.
+
+**27.03.2015** 0,5h
+Luokkakaavion muokkaus
