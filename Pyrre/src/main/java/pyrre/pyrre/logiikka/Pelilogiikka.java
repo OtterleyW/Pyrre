@@ -1,8 +1,10 @@
 package pyrre.pyrre.logiikka;
 
 import java.util.ArrayList;
+import javax.swing.SwingUtilities;
 import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.kortit.Korttipakka;
+import pyrre.pyrre.ui.Kayttoliittyma;
 
 /**
  *
@@ -12,6 +14,9 @@ public class Pelilogiikka {
     private Korttipakka pakka;
     private Pelialusta pelialusta;
     private Pelisaannot saannot;
+    private ArrayList<Kortti> valitut;
+    
+    
     
 //Käynnistää pelin
     public void pelinKaynnistys() {
@@ -20,6 +25,7 @@ public class Pelilogiikka {
         System.out.println("Pelialusta luotu");
         this.pelialusta.tulostaPoyta();
         this.saannot = new Pelisaannot(pelialusta);
+        this.valitut = new ArrayList<Kortti>();
     }
 
     //Luo uuden pelipakan ja sekoittaa pakan kortit
@@ -43,36 +49,6 @@ public class Pelilogiikka {
     return pelialusta;
     }
     
-    //Valitsee pelattavat kortit ja tarkastaa niiden summan, 
-    //jos summa on 13 muuttuu korttien paikka
-    public void valitseKortit(Kortti kortti1, Kortti kortti2){
-        
-        if(this.saannot.voikoKortinValita(kortti1) && this.saannot.voikoKortinValita(kortti2)){
-            if(kortti1.getArvo()+kortti2.getArvo() == 13){
-                muutaPaikka(kortti1);
-                muutaPaikka(kortti2);
-                
-            }
-        }
-        
-    }
-    
-    //Jos korttein summa on 13 poistetaan kortit pelistä. 
-    //Pöydällä olevan kortin tilalle asetetaan tyhjä kortti, pakassa oleva kortti poistetaan
-    public void muutaPaikka(Kortti kortti){
-        if(kortti.getPaikka() == "poyta"){
-            int i = kortti.getRivi();
-            int j = kortti.getSarake();
-            
-            pelialusta.asetaTyhjaKortti(i, j);
-            kortti.asetaPaikka("poistettu");
-        }
-        
-        if(kortti.getPaikka() == "pakka"){
-            pakka.poistaKortti(kortti);
-        }
-            
-    }
     
     //Siirtää pakan päälimmäisen kortin poistopakkaan
     public void selaaPakkaa(){
@@ -80,6 +56,57 @@ public class Pelilogiikka {
         pakka.asetaPoistopakkaan(kortti);
     }
     
+    public Pelialusta getPelialusta(){
+        return this.pelialusta;
+    }
+    
+    public void valitseKortti(Kortti kortti){
+        if(saannot.voikoKortinValita(kortti)){
+            if(valitut.size()<2){
+                valitut.add(kortti);
+            }
+        }
+    }
+    
+    public int getValittujenMaara(){
+        return valitut.size();
+    }
+    
+    public int laskeValitutYhteen(){
+         int summa = 0;
+         
+         for(Kortti kortti : valitut){
+             summa += kortti.getArvo();
+         }
+         
+        return summa;
+    }
+    
+    public boolean tarkastaKorttienSumma(int summa){
+        if(summa == 13){
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public void muutaKortitTyhjaksi(){
+        for(Kortti kortti : valitut){
+            kortti.asetaPaikka("Poistopakka");
+            kortti = kortti.LuoTyhjaKortti();
+            
+            int i = kortti.getRivi();
+            int j = kortti.getArvo();
+            
+            this.pelialusta.tallennaKortti(i, j, kortti);
+                    
+        }
+        valitut.clear();
+    }
+    
+    
+    
+   
 
    }
 

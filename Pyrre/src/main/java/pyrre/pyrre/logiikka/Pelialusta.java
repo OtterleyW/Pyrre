@@ -86,6 +86,11 @@ public class Pelialusta {
         return this.pelialusta;
     }
     
+    //tallentaa kortin uudestaan pelialustalle
+    public void tallennaKortti(int i, int j, Kortti kortti){
+        pelialusta[i][j] = kortti;
+    }
+    
 }
     
    

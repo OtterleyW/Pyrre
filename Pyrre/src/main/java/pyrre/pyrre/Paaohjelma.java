@@ -5,9 +5,12 @@
  */
 package pyrre.pyrre;
 import java.util.ArrayList;
+import javax.swing.SwingUtilities;
 import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.kortit.Korttipakka;
+import pyrre.pyrre.logiikka.Pelialusta;
 import pyrre.pyrre.logiikka.Pelilogiikka;
+import pyrre.pyrre.ui.Kayttoliittyma;
 /**
  *
  * @author Jenni
@@ -16,8 +19,15 @@ public class Paaohjelma {
    
     public static void main(String[] args) {
         Pelilogiikka peli = new Pelilogiikka();
-        
         peli.pelinKaynnistys();
+        Pelialusta alusta = peli.getPelialusta();
+        
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(alusta, peli);
+        SwingUtilities.invokeLater(kayttoliittyma);
+
+        
+       
+        
 
         
 

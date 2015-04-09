@@ -17,6 +17,7 @@ public class Pelisaannot {
 
     public Pelisaannot(Pelialusta alusta) {
         this.alusta = alusta;
+
     }
 
     public boolean voikoKortinValita(Kortti kortti) {
@@ -50,4 +51,5 @@ public class Pelisaannot {
 
         return oikeaKortti;
     }
+
 }
