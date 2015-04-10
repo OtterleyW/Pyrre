@@ -71,6 +71,11 @@ public class Kortti {
         return this.paikka;
     }
     
+    
+    public void poista(){
+        this.paikka = "poistopakka";
+        this.arvo = 0;
+    }
 
     
     

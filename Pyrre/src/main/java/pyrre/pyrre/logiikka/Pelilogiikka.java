@@ -92,13 +92,7 @@ public class Pelilogiikka {
     
     public void muutaKortitTyhjaksi(){
         for(Kortti kortti : valitut){
-            kortti.asetaPaikka("Poistopakka");
-            kortti = kortti.LuoTyhjaKortti();
-            
-            int i = kortti.getRivi();
-            int j = kortti.getArvo();
-            
-            this.pelialusta.tallennaKortti(i, j, kortti);
+            kortti.poista();
                     
         }
         valitut.clear();

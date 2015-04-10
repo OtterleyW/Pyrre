@@ -24,6 +24,7 @@ public class Kayttoliittyma implements Runnable {
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
     private Container container;
+    private Pelikentta pelikentta;
 
     public Kayttoliittyma(Pelialusta alusta, Pelilogiikka logiikka) {
         this.alusta = alusta;
@@ -47,17 +48,18 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         JLabel teksti = new JLabel("Pyramidipasianssi");
         container.add(teksti);
-        container.add(luoPelikentta());
+        this.pelikentta = luoPelikentta();
+        container.add(this.pelikentta);
     }
 
     private Pelikentta luoPelikentta() {
         Pelikentta pelikentta = new Pelikentta(this.alusta, this.logiikka, this);
-        pelikentta.luoButtonit();
         return pelikentta;
     }
     
     public void paivitaRuutu() {
         System.out.println("reepaint");
+        pelikentta.paivitaRuutu();
        container.repaint();
     }
 

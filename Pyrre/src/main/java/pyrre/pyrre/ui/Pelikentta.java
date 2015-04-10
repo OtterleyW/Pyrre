@@ -18,28 +18,29 @@ import pyrre.pyrre.logiikka.Pelilogiikka;
  * @author Jenni
  */
 public class Pelikentta extends JPanel {
-    
+
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
     private Kayttoliittyma kayttoliittyma;
     private JButton[][] buttonit;
-    
-    public Pelikentta(Pelialusta alusta, Pelilogiikka logiikka, Kayttoliittyma kayttoliittyma){
+    private Kortti[][] kortit;
+
+    public Pelikentta(Pelialusta alusta, Pelilogiikka logiikka, Kayttoliittyma kayttoliittyma) {
         super(new GridLayout(7, 13));
         this.alusta = alusta;
         this.logiikka = logiikka;
         this.kayttoliittyma = kayttoliittyma;
-        
+        this.kortit = alusta.getPelialusta();
         this.buttonit = new JButton[7][13];
+
+        this.luoButtonit();
     }
-    
-    
-    public void luoButtonit(){
-        Kortti[][] kortit = alusta.getPelialusta();
+
+    private void luoButtonit() {
+        System.out.println("Luo buttonit");
 
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
-
                 JButton button = new JButton(kortit[i][j].toString());
                 button.setVisible(false);
                 if ((kortit[i][j].getArvo() != 0) && kortit[i][j].getPaikka() != "Poistopakka") {
@@ -52,13 +53,10 @@ public class Pelikentta extends JPanel {
             }
 
         }
-        
-        
-    }
-    
-    public void paivitaButtonit(){
-        Kortti[][] kortit = alusta.getPelialusta();
 
+    }
+
+    public void paivitaButtonit() {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
                 if (kortit[i][j].getArvo() == 0) {
@@ -68,12 +66,9 @@ public class Pelikentta extends JPanel {
             }
         }
     }
-    
-    @Override
-    public void repaint() {
-        // Tee asioita ennen kuin piirretään uudestaan...
-        
-        // Nyt piirretään!
-        super.repaint();
+
+    public void paivitaRuutu() {
+        System.out.println("Paivita pelikentta");
+        paivitaButtonit();
     }
 }
