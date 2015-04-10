@@ -9,6 +9,7 @@ package pyrre.pyrre.ui;
  *
  * @author Jenni
  */
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,12 +22,12 @@ public class Kuuntelija implements ActionListener {
 
     private Kortti kortti;
     private Pelilogiikka logiikka;
-    private JPanel panel;
+    private Kayttoliittyma liittyma;
     
-    public Kuuntelija(Kortti kortti, Pelilogiikka logiikka, JPanel panel) {
+    public Kuuntelija(Kortti kortti, Pelilogiikka logiikka, Kayttoliittyma liittyma) {
         this.kortti = kortti;
         this.logiikka = logiikka;
-        this.panel = panel;
+        this.liittyma = liittyma;
     }
 
     @Override
@@ -48,6 +49,6 @@ public class Kuuntelija implements ActionListener {
             }
         }
         
-         panel.repaint();
+        liittyma.paivitaRuutu();
     }
 }

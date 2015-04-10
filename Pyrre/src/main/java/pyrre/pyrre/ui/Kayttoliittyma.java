@@ -23,6 +23,7 @@ public class Kayttoliittyma implements Runnable {
     private JFrame frame;
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
+    private Container container;
 
     public Kayttoliittyma(Pelialusta alusta, Pelilogiikka logiikka) {
         this.alusta = alusta;
@@ -35,8 +36,9 @@ public class Kayttoliittyma implements Runnable {
         frame.setPreferredSize(new Dimension(1500, 600));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        luoKomponentit(frame.getContentPane());
+        
+        this.container = frame.getContentPane();
+        luoKomponentit(this.container);
 
         frame.pack();
         frame.setVisible(true);
@@ -58,7 +60,7 @@ public class Kayttoliittyma implements Runnable {
                     JButton button = new JButton(kortit[i][j].toString());
                     
                     if((kortit[i][j].getArvo() != 0) && kortit[i][j].getPaikka() != "Poistopakka"){
-                    button.addActionListener(new Kuuntelija(kortit[i][j], this.logiikka, panel));
+                    button.addActionListener(new Kuuntelija(kortit[i][j], this.logiikka, this));
                     }
                     
                     panel.add(button);
@@ -68,9 +70,11 @@ public class Kayttoliittyma implements Runnable {
         }
         return panel;
     }
-        
-
     
+    public void paivitaRuutu() {
+        System.out.println("reepaint");
+       container.repaint();
+    }
 
     public JFrame getFrame() {
         return frame;
