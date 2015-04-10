@@ -20,3 +20,9 @@ Testien kirjoittamista lisää. Pelisäännöt luokan tekemeninen.
 
 **27.03.2015** 0,5h
 Luokkakaavion muokkaus
+
+**09.04.2015** 4h?
+Unohtunut tuntikirjanpito, tuntimäärä heitetty hatusta. Kuitenkin graafisen käyttöliittymän aloittelua
+
+*10.04.2015** 2h
+Graafisen käyttöliittymän jatkamista, nyt peli jo vähän pelattava :)

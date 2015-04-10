@@ -5,6 +5,7 @@
  */
 package pyrre.pyrre.logiikka;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,6 +25,7 @@ public class PelilogiikkatTest {
     private Pelialusta pelialusta;
     private Pelilogiikka logiikka;
     private Pelisaannot saannot;
+    private ArrayList<Kortti> valitut;
     
     public PelilogiikkatTest() {
     }
@@ -32,6 +34,9 @@ public class PelilogiikkatTest {
     @Before
     public void setUp() {
         this.logiikka = new Pelilogiikka();
+        this.pakka = logiikka.teePelipakka();
+        this.valitut = new ArrayList<Kortti>();
+        this.saannot = new Pelisaannot(this.pelialusta);
     }
     
     @After
@@ -64,7 +69,12 @@ public class PelilogiikkatTest {
          assertEquals(false, onkoViereinen);
     }
     
-
+    @Test
+    public void getPelialustaToimii(){
+        logiikka.pelinKaynnistys();
+        Pelialusta peli1 = logiikka.luoPelialusta();
+        Pelialusta peli2 = logiikka.getPelialusta();
+        assertEquals(peli1, peli2);
+    }
     
-
 }

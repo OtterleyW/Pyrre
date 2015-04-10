@@ -46,15 +46,18 @@ public class Pelilogiikka {
     public Pelialusta luoPelialusta() {
     Pelialusta pelialusta = new Pelialusta(pakka);
     pelialusta.asetaKortitPoydalle();
+    
+    this.pelialusta = pelialusta;
+    
     return pelialusta;
     }
     
     
-    //Siirtää pakan päälimmäisen kortin poistopakkaan
-    public void selaaPakkaa(){
-        Kortti kortti = pakka.nostaPaalimmainen();
-        pakka.asetaPoistopakkaan(kortti);
-    }
+//    //Siirtää pakan päälimmäisen kortin poistopakkaan
+//    public void selaaPakkaa(){
+//        Kortti kortti = pakka.nostaPaalimmainen();
+//        pakka.asetaPoistopakkaan(kortti);
+//    }
     
     public Pelialusta getPelialusta(){
         return this.pelialusta;
@@ -63,7 +66,7 @@ public class Pelilogiikka {
     public void valitseKortti(Kortti kortti){
         if(saannot.voikoKortinValita(kortti)){
             if(valitut.size()<2){
-                valitut.add(kortti);
+               valitut.add(kortti);
             }
         }
     }
