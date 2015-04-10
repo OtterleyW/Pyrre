@@ -33,13 +33,13 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Pyramidipasianssi");
-        frame.setPreferredSize(new Dimension(1500, 600));
+        frame.setPreferredSize(new Dimension(1200, 600));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         this.container = frame.getContentPane();
         luoKomponentit(this.container);
-
+        
         frame.pack();
         frame.setVisible(true);
     }
@@ -47,28 +47,13 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         JLabel teksti = new JLabel("Pyramidipasianssi");
         container.add(teksti);
-        container.add(luoPelikentta(this.alusta));
+        container.add(luoPelikentta());
     }
 
-    private JPanel luoPelikentta(Pelialusta alusta) {
-        JPanel panel = new JPanel(new GridLayout(7, 13));
-        Kortti[][] kortit = alusta.getPelialusta();
-
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 13; j++) {
-                
-                    JButton button = new JButton(kortit[i][j].toString());
-                    
-                    if((kortit[i][j].getArvo() != 0) && kortit[i][j].getPaikka() != "Poistopakka"){
-                    button.addActionListener(new Kuuntelija(kortit[i][j], this.logiikka, this));
-                    }
-                    
-                    panel.add(button);
-                
-            }
-            
-        }
-        return panel;
+    private Pelikentta luoPelikentta() {
+        Pelikentta pelikentta = new Pelikentta(this.alusta, this.logiikka, this);
+        pelikentta.luoButtonit();
+        return pelikentta;
     }
     
     public void paivitaRuutu() {
