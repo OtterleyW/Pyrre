@@ -70,7 +70,7 @@ public class Pelilogiikka {
         lisaaValittuihin(kortti);
     }
 
-    public void lisaaValittuihin(Kortti kortti) {
+   private void lisaaValittuihin(Kortti kortti) {
         if (valitut.size() < 2) {
             valitut.add(kortti);
             valitseKortti(kortti);

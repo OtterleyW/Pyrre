@@ -34,6 +34,11 @@ public class Pakkakuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         this.kortti = pakka.getPaalimmainenKortti();
+        
+        if(this.kortti.getArvo() == 13){
+            pakka.nostaKortti();
+        } else{
         logiikka.valitsePakastaKortti(this.kortti);
+        }
     }
 }
