@@ -73,8 +73,9 @@ public class Kortti {
     
     
     public void poista(){
-        this.paikka = "poistopakka";
+        this.paikka = "poistettu";
         this.arvo = 0;
+        System.out.println("kortti poistettu");
     }
 
     

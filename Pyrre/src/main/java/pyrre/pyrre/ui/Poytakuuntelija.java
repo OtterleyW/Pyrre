@@ -18,13 +18,13 @@ import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.logiikka.Pelilogiikka;
 import pyrre.pyrre.logiikka.Pelisaannot;
 
-public class Kuuntelija implements ActionListener {
+public class Poytakuuntelija implements ActionListener {
 
     private Kortti kortti;
     private Pelilogiikka logiikka;
     private Kayttoliittyma liittyma;
     
-    public Kuuntelija(Kortti kortti, Pelilogiikka logiikka, Kayttoliittyma liittyma) {
+    public Poytakuuntelija(Kortti kortti, Pelilogiikka logiikka, Kayttoliittyma liittyma) {
         this.kortti = kortti;
         this.logiikka = logiikka;
         this.liittyma = liittyma;
@@ -32,23 +32,8 @@ public class Kuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (kortti.getArvo() == 13) {
-            logiikka.valitseKortti(kortti);
-            logiikka.muutaKortitTyhjaksi();
-            System.out.println("woopwoop");
-        } else {
-            logiikka.valitseKortti(kortti);
-
-            if (logiikka.getValittujenMaara() == 2) {
-                int summa = logiikka.laskeValitutYhteen();
-
-                if (logiikka.tarkastaKorttienSumma(summa)) {
-                    System.out.println("Summa oli 13!");
-                    logiikka.muutaKortitTyhjaksi();
-                }
-            }
-        }
-        
+      
+        logiikka.valitsePoydaltaKortti(this.kortti);
         liittyma.paivitaRuutu();
     }
 }
