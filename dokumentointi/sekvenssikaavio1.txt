@@ -1,0 +1,20 @@
+title Pyrre käyttötapaus: valitaan kaksi korttia, joiden summa on 13
+
+Käyttäjä->Käyttöliittymä: Valitse herttaässä
+Käyttöliittymä->Logiikka: Valitse kortti
+Logiikka->Säännöt: Voiko valita?
+Säännöt-->Logiikka: true
+Logiikka->Valitut: Tallenna kortti
+Logiikka->Valitut: Koko?
+Valitut-->Logiikka: 1
+Käyttäjä->Käyttöliittymä: Valitse ristikuningatar
+Käyttöliittymä->Logiikka: Valitse kortti
+Logiikka->Säännöt: Voiko valita?
+Säännöt-->Logiikka: true
+Logiikka->Valitut: Tallenna kortti
+Logiikka->Valitut: Koko?
+Valitut-->Logiikka: 2
+Logiikka->Logiikka: Laske summa
+Logiikka-->Logiikka: Summa on 13
+Logiikka->Valitut: Poista valitut
+Logiikka->Käyttöliittymä: Piilota valitut kortit

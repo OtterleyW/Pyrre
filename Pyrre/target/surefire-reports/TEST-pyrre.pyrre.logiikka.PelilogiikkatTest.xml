@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="pyrre.pyrre.logiikka.PelilogiikkatTest" time="0" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="pyrre.pyrre.logiikka.PelilogiikkatTest" time="0.01" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_05\jre\bin"/>
@@ -61,8 +61,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="getPelialustaToimii" time="0"/>
-  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="teePelipakkaLuoUudenPakan" time="0"/>
-  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="pelinKaynnistysPalauttaaPelipakan" time="0"/>
-  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="teePelipakkaSekoittaaPakan" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="pelinKaynnistysLuoPelipakan" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="poydaltaEiVoiValitaEiSallittuaKorttia" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="valitseKorttiToimiiKunKortteinSummaOn13" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="poydaltaVoiValitaSallitunKortin" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="valitseKorttiToimiiKunKorttiOnKuningas" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="pakastaVoiValitaKortin" time="0"/>
+  <testcase classname="pyrre.pyrre.logiikka.PelilogiikkatTest" name="pelinKaynnistusLuoPelialustan" time="0.01"/>
 </testsuite>

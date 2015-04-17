@@ -1,6 +1,12 @@
-pyrre\pyrre\logiikka\Pelisaannot.class
-pyrre\pyrre\logiikka\Pelialusta.class
 pyrre\pyrre\logiikka\Pelilogiikka.class
+pyrre\pyrre\ui\Pelikentta.class
+pyrre\pyrre\ui\Pakanselaus.class
 pyrre\pyrre\kortit\Kortti.class
+pyrre\pyrre\logiikka\Pelisaannot.class
 pyrre\pyrre\Paaohjelma.class
+pyrre\pyrre\ui\Pelipakka.class
 pyrre\pyrre\kortit\Korttipakka.class
+pyrre\pyrre\ui\Kayttoliittyma.class
+pyrre\pyrre\ui\Pakkakuuntelija.class
+pyrre\pyrre\ui\Poytakuuntelija.class
+pyrre\pyrre\logiikka\Pelialusta.class

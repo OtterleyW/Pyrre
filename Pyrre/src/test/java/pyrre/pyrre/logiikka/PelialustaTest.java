@@ -52,21 +52,9 @@ public class PelialustaTest {
     }
 
     @Test
-    public void luoTyhjaKorttiLuoKortin() {
-        Kortti kortti = alusta.luoTyhjaKortti();
-        assertEquals("        ", kortti.toString());
-    }
-
-    @Test
     public void asetaTyhjaKorttiAsettaaKortin() {
         alusta.asetaTyhjaKortti(0, 0);
         assertEquals("        ", this.pelialusta[0][0].toString());
-    }
-
-    @Test
-    public void asetaKorttiAsettaaKortin() {
-        alusta.asetaKortti(0, 0);
-        assertEquals(" Risti A ", this.pelialusta[0][0].toString());
     }
 
     @Test

@@ -7,14 +7,12 @@ Pelissä on 52 kortin pakka, joka jaetaan siten, että pyramidin huipuksi kään
 
 **Käyttäjät:** Pelaaja
 
-
 **Pelaajan toiminnot**
 
-* Pelimuunnelman valitseminen
-  - kuvapuoli ylöspäin olevat kortit
-  - kuvapuoli alaspäin olevat kortit
 * Pelin aloittaminen
-  - korttiparin poistaminen
-  - uuden kortin kääntäminen
-  - toiminnon kumoaminen kerran?
-* Pistelista
+  - korttiparin poistaminen pöydältä
+  - korttiparin poistaminen siten, että toinen kortti on pelipakassa
+  - uuden kortin kääntäminen pakan päälimmäiseksi
+  - uuden pelin aloittaminen
+
+

@@ -6,6 +6,7 @@
 package pyrre.pyrre.logiikka;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,61 +21,96 @@ import pyrre.pyrre.kortit.Korttipakka;
  * @author Jenni
  */
 public class PelilogiikkatTest {
-    
+
     private Korttipakka pakka;
     private Pelialusta pelialusta;
     private Pelilogiikka logiikka;
     private Pelisaannot saannot;
     private ArrayList<Kortti> valitut;
-    
-    public PelilogiikkatTest() {
-    }
-    
-    
+
     @Before
     public void setUp() {
         this.logiikka = new Pelilogiikka();
-        this.pakka = logiikka.teePelipakka();
-        this.valitut = new ArrayList<Kortti>();
-        this.saannot = new Pelisaannot(this.pelialusta);
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
-    public void pelinKaynnistysPalauttaaPelipakan(){
+    public void pelinKaynnistysLuoPelipakan() {
+        assertNull(logiikka.getPelipakka());
         logiikka.pelinKaynnistys();
-        assertEquals(24, logiikka.getPelipakka().getPakanKoko());
+        assertNotNull(logiikka.getPelipakka());
+    }
+
+    @Test
+    public void pelinKaynnistusLuoPelialustan() {
+        assertNull(logiikka.getPelialusta());
+        logiikka.pelinKaynnistys();
+        assertNotNull(logiikka.getPelialusta());
+        //Tarkistetaan onko kortit asetettu pöydälle
+        assertNotNull(logiikka.getPelialusta().valitseKortti(1, 6));
+    }
+
+    @Test
+    public void poydaltaVoiValitaSallitunKortin() {
+        logiikka.pelinKaynnistys();
+        assertEquals(0, logiikka.getValittujenMaara());
+        Kortti kortti = logiikka.getPelialusta().valitseKortti(6, 0);
+        logiikka.valitsePoydaltaKortti(kortti);
+
+        if (kortti.getArvo() == 13) {
+            assertEquals("poistettu", kortti.getPaikka());
+        } else {
+            assertEquals(1, logiikka.getValittujenMaara());
+        }
+    }
+
+    @Test
+    public void poydaltaEiVoiValitaEiSallittuaKorttia() {
+        logiikka.pelinKaynnistys();
+        assertEquals(0, logiikka.getValittujenMaara());
+        Kortti kortti = logiikka.getPelialusta().valitseKortti(0, 6);
+        logiikka.valitsePoydaltaKortti(kortti);
+        assertEquals(0, logiikka.getValittujenMaara());
+    }
+
+    @Test
+    public void pakastaVoiValitaKortin() {
+        logiikka.pelinKaynnistys();
+        assertEquals(0, logiikka.getValittujenMaara());
+        Kortti kortti = logiikka.getPelipakka().nostaPaalimmainen();
+        logiikka.valitsePakastaKortti(kortti);
+
+        if (kortti.getArvo() == 13) {
+            assertEquals("poistettu", kortti.getPaikka());
+        } else {
+            assertEquals(1, logiikka.getValittujenMaara());
+        }
     }
     
     @Test
-    public void teePelipakkaLuoUudenPakan(){
-        Korttipakka pakka = logiikka.teePelipakka();
-        assertEquals(52, pakka.getPakanKoko());
+    public void valitseKorttiToimiiKunKorttiOnKuningas() {
+        logiikka.pelinKaynnistys();
+        Kortti kortti = new Kortti(13,0);
+        logiikka.valitseKortti(kortti);
+        assertEquals(0, logiikka.getValittujenMaara());
+        assertEquals("poistettu", kortti.getPaikka());
     }
     
     @Test
-    public void teePelipakkaSekoittaaPakan(){
-         Korttipakka pakka = logiikka.teePelipakka();
-         Kortti kortti1 = pakka.nostaPaalimmainen();
-         Kortti kortti2 = pakka.nostaPaalimmainen();
-         boolean onkoViereinen = false;
-         
-         if(kortti1.getArvo() == (kortti2.getArvo() - 1) && kortti1.getMaa() == kortti2.getMaa()){
-            onkoViereinen = true;
-         }
+    public void valitseKorttiToimiiKunKortteinSummaOn13() {
+        logiikka.pelinKaynnistys();
+        Kortti kortti1 = new Kortti(6,0);
+        Kortti kortti2 = new Kortti(7,0);
         
-         assertEquals(false, onkoViereinen);
+        logiikka.valitseKortti(kortti1);
+        logiikka.valitseKortti(kortti2);
+        assertEquals(0, logiikka.getValittujenMaara());
+        assertEquals("poistettu", kortti1.getPaikka());
+        assertEquals("poistettu", kortti2.getPaikka());
+        
     }
-    
-    @Test
-    public void getPelialustaToimii(){
-        logiikka.pelinKaynnistys();
-        Pelialusta peli1 = logiikka.luoPelialusta();
-        Pelialusta peli2 = logiikka.getPelialusta();
-        assertEquals(peli1, peli2);
-    }
-    
+
 }

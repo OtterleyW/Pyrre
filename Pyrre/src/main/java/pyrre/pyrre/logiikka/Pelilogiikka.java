@@ -24,7 +24,6 @@ public class Pelilogiikka {
     public void pelinKaynnistys() {
         this.pakka = teePelipakka();
         this.pelialusta = luoPelialusta();
-        this.pelialusta.tulostaPoyta();
         this.saannot = new Pelisaannot(pelialusta);
         this.valitut = new ArrayList<Kortti>();
     }
@@ -34,7 +33,7 @@ public class Pelilogiikka {
      *
      * @return pelipakka
      */
-    public Korttipakka teePelipakka() {
+    private Korttipakka teePelipakka() {
         Korttipakka pakka = new Korttipakka();
         pakka.LuoKorttipakka();
         pakka.sekoitaKorttipakka();
@@ -51,7 +50,7 @@ public class Pelilogiikka {
      *
      * @return pelialusta
      */
-    public Pelialusta luoPelialusta() {
+    private Pelialusta luoPelialusta() {
         Pelialusta pelialusta = new Pelialusta(pakka);
         pelialusta.asetaKortitPoydalle();
 
@@ -119,7 +118,7 @@ public class Pelilogiikka {
      *
      * @return korttien arvojen summa
      */
-    public int laskeValitutYhteen() {
+    private int laskeValitutYhteen() {
         int summa = 0;
         for (Kortti kortti : valitut) {
             summa += kortti.getArvo();

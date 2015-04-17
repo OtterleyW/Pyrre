@@ -1,0 +1,13 @@
+title Pyrre käyttötapaus: valitaan kortti, joka on kuningas
+
+Käyttäjä->Käyttöliittymä: Valitse ristikuningas
+Käyttöliittymä->Logiikka: Valitse kortti
+Logiikka->Säännöt: Voiko valita?
+Säännöt-->Logiikka: true
+Logiikka->Valitut: Tallenna kortti
+Logiikka->Valitut: Koko?
+Valitut-->Logiikka: 1
+Logiikka->Logiikka: tarkista kortin arvon
+Logiikka-->Logiikka: 13
+Logiikka->Valitut: Poista valitut
+Logiikka->Käyttöliittymä: Piilota kortti

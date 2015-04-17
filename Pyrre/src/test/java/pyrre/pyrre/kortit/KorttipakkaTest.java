@@ -1,6 +1,7 @@
 package pyrre.pyrre.kortit;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,17 +41,11 @@ public class KorttipakkaTest {
      @Test
      public void sekoitaKorttipakkaToimii() {
          pakka.LuoKorttipakka();
-         Kortti kortti1 = pakka.getPakka().get(5);
+         Object[] sekoittamattomatKortit = pakka.getPakka().toArray();
          pakka.sekoitaKorttipakka();
-         Kortti kortti2 = pakka.getPakka().get(5);
+         Object[] sekoitetutKortit = pakka.getPakka().toArray();
          
-         boolean arvo = false;
-         
-         if(kortti1.getArvo() == kortti2.getArvo() && kortti1.getMaa() == kortti2.getMaa()){
-             arvo = true;
-         }
-         
-         assertEquals(false, arvo);
+         assertFalse("Pakka ei ole sekoitettu", Arrays.equals(sekoittamattomatKortit, sekoitetutKortit));
      }
      
      @Test
@@ -67,11 +62,6 @@ public class KorttipakkaTest {
          pakka.nostaPaalimmainen();
          
          assertEquals(51, pakka.getPakanKoko());
-     }
-     
-     @Test
-     public void nostaPaalimmainenKorttiPalauttaaTyhjanJosPakkaTyhja() {
-         assertEquals(0, pakka.nostaPaalimmainen().getArvo());
      }
     
 }

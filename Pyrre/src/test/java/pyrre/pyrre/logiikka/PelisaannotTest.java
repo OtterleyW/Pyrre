@@ -67,17 +67,6 @@ public class PelisaannotTest {
     }
 
     @Test
-    public void voikoKortinValitaToimiiKunKorttiVapaa() {
-        alusta.asetaTyhjaKortti(6, 0);
-        alusta.asetaTyhjaKortti(6, 2);
-
-        Kortti kortti = alusta.valitseKortti(5, 1);
-        boolean arvo = saannot.voikoKortinValita(kortti);
-
-        assertEquals(true, arvo);
-    }
-
-    @Test
     public void voikoKortinValitaToimiiKunKorttiVarattu() {
         Kortti kortti = alusta.valitseKortti(0, 6);
         boolean arvo = saannot.voikoKortinValita(kortti);

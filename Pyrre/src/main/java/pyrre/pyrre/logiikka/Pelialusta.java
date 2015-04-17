@@ -63,7 +63,7 @@ public class Pelialusta {
      * @param i kortin rivi
      * @param j kortin sarake
      */
-    private void asetaTyhjaKortti(int i, int j) {
+    public void asetaTyhjaKortti(int i, int j) {
         Kortti kortti = luoTyhjaKortti();
         pelialusta[i][j] = kortti;
     }
