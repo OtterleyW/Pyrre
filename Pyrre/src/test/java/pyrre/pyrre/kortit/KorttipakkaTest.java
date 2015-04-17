@@ -25,7 +25,7 @@ public class KorttipakkaTest {
      public void LuoKorttipakkaTekee52Korttia() {
          pakka.LuoKorttipakka();
          
-         assertEquals(52, pakka.TarkistaPakanKoko());
+         assertEquals(52, pakka.getPakanKoko());
      }
      
      @Test
@@ -34,7 +34,7 @@ public class KorttipakkaTest {
          pakka.nostaPaalimmainen();
          pakka.nostaPaalimmainen();
          
-         assertEquals(50, pakka.TarkistaPakanKoko());
+         assertEquals(50, pakka.getPakanKoko());
      }
      
      @Test
@@ -66,16 +66,7 @@ public class KorttipakkaTest {
          pakka.LuoKorttipakka();
          pakka.nostaPaalimmainen();
          
-         assertEquals(51, pakka.TarkistaPakanKoko());
-     }
-     
-     @Test
-     public void asetaPoistopakkaanToimii() {
-         pakka.LuoKorttipakka();
-         Kortti kortti = pakka.nostaPaalimmainen();
-         pakka.asetaPoistopakkaan(kortti);
-         
-         assertEquals(1, pakka.getPoistopakka().size());
+         assertEquals(51, pakka.getPakanKoko());
      }
      
      @Test
@@ -83,17 +74,5 @@ public class KorttipakkaTest {
          assertEquals(0, pakka.nostaPaalimmainen().getArvo());
      }
     
-     @Test
-     public void poistaKorttiToimii(){
-         pakka.LuoKorttipakka();
-         Kortti kortti = pakka.nostaPaalimmainenPoistamatta();
-         pakka.poistaKortti(kortti);
-         
-         assertEquals(51, pakka.TarkistaPakanKoko());
-     }
-     
-     @Test
-     public void nostaPoistamattaPalauttaaTyhjanJosPakkaTyhja(){
-         assertEquals(0,pakka.nostaPaalimmainenPoistamatta().getArvo());
-     }
 }
+     

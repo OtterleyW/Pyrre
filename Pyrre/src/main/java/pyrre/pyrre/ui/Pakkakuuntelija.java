@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pyrre.pyrre.ui;
 
-/**
- *
- * @author Jenni
- */
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +9,11 @@ import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.logiikka.Pelilogiikka;
 import pyrre.pyrre.logiikka.Pelisaannot;
 
+/**
+ * Luokka, joka reagoi siihen, kun pakassa olevaa korttia klikataan
+ *
+ * @author Jenni
+ */
 public class Pakkakuuntelija implements ActionListener {
 
     private Kortti kortti;
@@ -25,6 +21,13 @@ public class Pakkakuuntelija implements ActionListener {
     private Kayttoliittyma liittyma;
     private Pelipakka pakka;
 
+    /**
+     * Luo uuden ActionListenerin käyttöliittymässä olevaa korttipakkaa varten
+     *
+     * @param logiikka Pelilogiikka
+     * @param liittyma Käyttöliittymä
+     * @param pakka Käyttöliittymän pelipakka
+     */
     public Pakkakuuntelija(Pelilogiikka logiikka, Kayttoliittyma liittyma, Pelipakka pakka) {
         this.logiikka = logiikka;
         this.liittyma = liittyma;
@@ -34,11 +37,10 @@ public class Pakkakuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         this.kortti = pakka.getPaalimmainenKortti();
-        
-        if(this.kortti.getArvo() == 13){
+        if (this.kortti.getArvo() == 13) {
             pakka.nostaKortti();
-        } else{
-        logiikka.valitsePakastaKortti(this.kortti);
+        } else {
+            logiikka.valitsePakastaKortti(this.kortti);
         }
     }
 }

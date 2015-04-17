@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pyrre.pyrre.ui;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -14,17 +10,25 @@ import pyrre.pyrre.logiikka.Pelialusta;
 import pyrre.pyrre.logiikka.Pelilogiikka;
 
 /**
+ * Käyttöliittymän pelikenttä, joka kuvaa pöydällä olevia kortteja
  *
  * @author Jenni
  */
 public class Pelikentta extends JPanel {
-
+    
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
     private Kayttoliittyma kayttoliittyma;
     private JButton[][] buttonit;
     private Kortti[][] kortit;
 
+    /**
+     * Luo uuden pelikentän
+     *
+     * @param alusta Pelialusta
+     * @param logiikka Pelilogiika
+     * @param kayttoliittyma Käyttöliittymä
+     */
     public Pelikentta(Pelialusta alusta, Pelilogiikka logiikka, Kayttoliittyma kayttoliittyma) {
         super(new GridLayout(7, 13));
         this.alusta = alusta;
@@ -32,16 +36,19 @@ public class Pelikentta extends JPanel {
         this.kayttoliittyma = kayttoliittyma;
         this.kortit = alusta.getPelialusta();
         this.buttonit = new JButton[7][13];
-
+        
         this.luoButtonit();
     }
 
+    /**
+     * Luo pelikentälle JButtonit, jotka edustavat pelissä olevia kortteja
+     */
     private void luoButtonit() {
         System.out.println("Luo buttonit");
-
+        
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
-                JButton button = new JButton(kortit[i][j].toString());
+                JButton button = new JButton(kortit[i][j].toString() + ", " + kortit[i][j].getRivi() + ", " + kortit[i][j].getSarake() + "," + i + "," + j);
                 button.setVisible(false);
                 if (kortit[i][j].getArvo() != 0) {
                     button.addActionListener(new Poytakuuntelija(kortit[i][j], this.logiikka, this.kayttoliittyma));
@@ -49,26 +56,33 @@ public class Pelikentta extends JPanel {
                 }
                 buttonit[i][j] = button;
                 this.add(button);
-
+                
             }
-
+            
         }
-
+        
     }
-
+    
+    /**
+     * Päivittää kentällä olevat JButtonit siten, että kortit, joiden paikka on "poistettu" piilotetaan
+     */
     public void paivitaButtonit() {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
                 if (kortit[i][j].getPaikka() == "poistettu") {
                     JButton button = buttonit[i][j];
-                    button.setVisible(false);
+                    button.setText(kortit[i][j].toString() + kortit[i][j].getRivi() + "," + kortit[i][j].getSarake() + "," + i + "," + j);
+                    button.setBackground(Color.red);
                 }
+                
             }
         }
     }
-
+    
+    /**
+     * Suorittaa paivitaButtonit metodin
+     */
     public void paivitaRuutu() {
-        System.out.println("Paivita pelikentta");
         paivitaButtonit();
     }
 }

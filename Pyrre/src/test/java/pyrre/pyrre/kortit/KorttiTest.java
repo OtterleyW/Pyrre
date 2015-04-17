@@ -68,7 +68,7 @@ public class KorttiTest {
     
     @Test
     public void asetaPaikkaToimii(){
-        kortti.asetaPaikka("testi");
+        kortti.setPaikka("testi");
         assertEquals("testi", kortti.getPaikka());
     }
     

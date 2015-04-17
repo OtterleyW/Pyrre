@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pyrre.pyrre.ui;
 
 import java.awt.BorderLayout;
@@ -19,6 +14,11 @@ import pyrre.pyrre.logiikka.Pelialusta;
 import pyrre.pyrre.logiikka.Pelilogiikka;
 import pyrre.pyrre.logiikka.Pelisaannot;
 
+/**
+ * Ohjelman graafinen käyttöliittymä
+ *
+ * @author Jenni
+ */
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
@@ -28,6 +28,12 @@ public class Kayttoliittyma implements Runnable {
     private Pelikentta pelikentta;
     private Pelipakka korttipakka;
 
+    /**
+     * Luo uuden käyttöliittymän
+     *
+     * @param alusta Pelissä luotu pelialusta
+     * @param logiikka Pelissä luotu pelilogiikka
+     */
     public Kayttoliittyma(Pelialusta alusta, Pelilogiikka logiikka) {
         this.alusta = alusta;
         this.logiikka = logiikka;
@@ -47,6 +53,11 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     * Luo käyttöliittymään vaaditut komponentit
+     *
+     * @param container Sisältää komponentit
+     */
     private void luoKomponentit(Container container) {
         JLabel teksti = new JLabel("Pyramidipasianssi");
         container.add(teksti);
@@ -56,18 +67,30 @@ public class Kayttoliittyma implements Runnable {
         container.add(this.korttipakka, BorderLayout.SOUTH);
     }
 
+    /**
+     * Luo käyttöliittymään näkymän pelikentästä
+     *
+     * @return käyttöliittymän pelikenttä
+     */
     private Pelikentta luoPelikentta() {
         Pelikentta pelikentta = new Pelikentta(this.alusta, this.logiikka, this);
         return pelikentta;
     }
 
+    /**
+     * Luo käyttöliittymään näkymän pelipakasta
+     *
+     * @return käyttöliittymän pelipakka
+     */
     private Pelipakka luoKorttipakka() {
         Pelipakka korttipakka = new Pelipakka(this.alusta, this.logiikka, this);
         return korttipakka;
     }
 
+    /**
+     * Päivittää käyttöliittymän näkymän
+     */
     public void paivitaRuutu() {
-        System.out.println("reepaint");
         pelikentta.paivitaRuutu();
         korttipakka.paivitaRuutu();
         container.repaint();

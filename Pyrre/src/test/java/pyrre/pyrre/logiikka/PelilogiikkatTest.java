@@ -46,13 +46,13 @@ public class PelilogiikkatTest {
     @Test
     public void pelinKaynnistysPalauttaaPelipakan(){
         logiikka.pelinKaynnistys();
-        assertEquals(24, logiikka.getPelipakka().TarkistaPakanKoko());
+        assertEquals(24, logiikka.getPelipakka().getPakanKoko());
     }
     
     @Test
     public void teePelipakkaLuoUudenPakan(){
         Korttipakka pakka = logiikka.teePelipakka();
-        assertEquals(52, pakka.TarkistaPakanKoko());
+        assertEquals(52, pakka.getPakanKoko());
     }
     
     @Test

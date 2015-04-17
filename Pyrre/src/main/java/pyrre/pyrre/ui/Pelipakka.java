@@ -58,14 +58,13 @@ public class Pelipakka extends JPanel {
        public void nostaKortti() {
         kortti = pakka.nostaPaalimmainen();
         this.pakkabutton.setText(kortti.toString()); 
-        System.out.println("Paivita pelipakka");
+ 
     }
        
        public void paivitaRuutu() {
-           if(kortti.getArvo() == 0){
+           if(kortti.getPaikka() == "poistettu"){
                nostaKortti();
            }
-           System.out.println(kortti.toString());
     }
 
 }

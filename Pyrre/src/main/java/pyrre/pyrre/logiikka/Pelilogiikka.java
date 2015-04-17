@@ -7,6 +7,7 @@ import pyrre.pyrre.kortit.Korttipakka;
 import pyrre.pyrre.ui.Kayttoliittyma;
 
 /**
+ * Pelilogiikka sisältää metodeja joilla hallitaan pelin toimintaa
  *
  * @author Jenni
  */
@@ -17,17 +18,22 @@ public class Pelilogiikka {
     private Pelisaannot saannot;
     private ArrayList<Kortti> valitut;
 
-//Käynnistää pelin
+    /**
+     * Käynnistää pelin luomalla pelipakan, pelialustan ja pelisäännöt
+     */
     public void pelinKaynnistys() {
         this.pakka = teePelipakka();
         this.pelialusta = luoPelialusta();
-        System.out.println("Pelialusta luotu");
         this.pelialusta.tulostaPoyta();
         this.saannot = new Pelisaannot(pelialusta);
         this.valitut = new ArrayList<Kortti>();
     }
 
-    //Luo uuden pelipakan ja sekoittaa pakan kortit
+    /**
+     * Luo uuden korttipakan ja sekoittaa pakan kortit
+     *
+     * @return pelipakka
+     */
     public Korttipakka teePelipakka() {
         Korttipakka pakka = new Korttipakka();
         pakka.LuoKorttipakka();
@@ -36,12 +42,15 @@ public class Pelilogiikka {
         return pakka;
     }
 
-    //Palauttaa pelipakan
     public Korttipakka getPelipakka() {
         return this.pakka;
     }
 
-    //Luo uuden pelialustan ja asettaa kortit pöydälle
+    /**
+     * Luo uuden pelialustan ja asettaa kortit pöydälle
+     *
+     * @return pelialusta
+     */
     public Pelialusta luoPelialusta() {
         Pelialusta pelialusta = new Pelialusta(pakka);
         pelialusta.asetaKortitPoydalle();
@@ -51,82 +60,87 @@ public class Pelilogiikka {
         return pelialusta;
     }
 
-//    //Siirtää pakan päälimmäisen kortin poistopakkaan
-//    public void selaaPakkaa(){
-//        Kortti kortti = pakka.nostaPaalimmainen();
-//        pakka.asetaPoistopakkaan(kortti);
-//    }
     public Pelialusta getPelialusta() {
         return this.pelialusta;
     }
 
+    /**
+     * Tarkistaa pelisäännöiltä, voiko käyttäjän pöydältä valitseman kortin
+     * valita. Jos voi, kortti valitaan.
+     *
+     * @param kortti Käyttäjän pöydältä valitsema kortti
+     */
     public void valitsePoydaltaKortti(Kortti kortti) {
         if (saannot.voikoKortinValita(kortti)) {
-            lisaaValittuihin(kortti);
-        }
-    }
-
-    public void valitsePakastaKortti(Kortti kortti) {
-        lisaaValittuihin(kortti);
-    }
-
-   private void lisaaValittuihin(Kortti kortti) {
-        if (valitut.size() < 2) {
-            valitut.add(kortti);
             valitseKortti(kortti);
         }
     }
 
+    /**
+     * Valitsee käyttäjän pakasta valitseman kortin.
+     *
+     * @param kortti Käyttäjän pakasta valitsema kortti
+     */
+    public void valitsePakastaKortti(Kortti kortti) {
+        valitseKortti(kortti);
+    }
+
+    /**
+     * Tarkistetaan valittujen, että valittu kortti tallennetaan ja se
+     * poistetaanko valitut kortit pelistä vai pitääkö valita lisää kortteja
+     *
+     * @param kortti Valittu kortti
+     */
     public void valitseKortti(Kortti kortti) {
-        if (kortti.getArvo() == 13) {
-            poistaValitutKortit();
-            tyhjennaValitut();
-            System.out.println("woopwoop");
-        }
+        if (valitut.size() < 2) {
+            valitut.add(kortti);
 
-        if (getValittujenMaara() >= 2) {
-            int summa = laskeValitutYhteen();
-            if (tarkastaKorttienSumma(summa)) {
-                System.out.println("Summa oli" + summa);
+            if (kortti.getArvo() == 13) {
                 poistaValitutKortit();
+                tyhjennaValitut();
             }
-            tyhjennaValitut();
-        }
 
+            if (getValittujenMaara() == 2) {
+                int summa = laskeValitutYhteen();
+                if (summa == 13) {
+                    poistaValitutKortit();
+                }
+                tyhjennaValitut();
+            }
+        }
     }
 
     public int getValittujenMaara() {
         return valitut.size();
     }
 
+    /**
+     * Laskee valitut-listalla olevien korttien aarvojen summan yhteen
+     *
+     * @return korttien arvojen summa
+     */
     public int laskeValitutYhteen() {
         int summa = 0;
-
         for (Kortti kortti : valitut) {
             summa += kortti.getArvo();
         }
-
         return summa;
     }
 
-    public boolean tarkastaKorttienSumma(int summa) {
-        if (summa == 13) {
-            return true;
-        }
-
-        return false;
-    }
-
+    /**
+     * Muuttaa valittujen korttien paikaksi "poistettu"
+     */
     public void poistaValitutKortit() {
+        System.out.println(valitut);
         for (Kortti kortti : valitut) {
             kortti.poista();
-
         }
     }
 
+    /**
+     * Tyhjentää valittujen korttien listan
+     */
     public void tyhjennaValitut() {
         valitut.clear();
     }
-    
-   
 }

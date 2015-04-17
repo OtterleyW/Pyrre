@@ -16,7 +16,10 @@ import pyrre.pyrre.ui.Kayttoliittyma;
  * @author Jenni
  */
 public class Paaohjelma {
-   
+/**
+ * Pääohjelma käynnistää ohjelman
+ * @param args 
+ */   
     public static void main(String[] args) {
         Pelilogiikka peli = new Pelilogiikka();
         peli.pelinKaynnistys();

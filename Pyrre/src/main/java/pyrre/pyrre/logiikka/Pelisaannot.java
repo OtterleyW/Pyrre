@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pyrre.pyrre.logiikka;
 
 import pyrre.pyrre.kortit.Kortti;
 
 /**
+ * Luokka tarjoaa metodin, jolla voi tarkistaa, onko tietty kortti pelattavissa
+ * vai ei
  *
  * @author Jenni
  */
@@ -15,11 +12,23 @@ public class Pelisaannot {
 
     private Pelialusta alusta;
 
+    /**
+     * Tallentaa pelialustan pelisääntöjen tietoon
+     *
+     * @param alusta Pelissä oleva pelialusta
+     */
     public Pelisaannot(Pelialusta alusta) {
         this.alusta = alusta;
 
     }
 
+    /**
+     * Tarkistaa, voiko kortin valita vai onko se lukittuna vielä toisten
+     * korttien "alle"
+     *
+     * @param kortti Tarkasteltava kortti
+     * @return boolean onko kortti valittavissa (true) vai ei (false)
+     */
     public boolean voikoKortinValita(Kortti kortti) {
         int rivi = kortti.getRivi();
         if (rivi == 6) {
@@ -27,13 +36,20 @@ public class Pelisaannot {
         } else {
             Kortti alaVasen = haeAlaVasenKortti(kortti);
             Kortti alaOikea = haeAlaOikeaKortti(kortti);
-            if (alaVasen.getArvo() == 0 && alaOikea.getArvo() == 0) {
+            if (alaVasen.getPaikka() == "poistettu" && alaOikea.getPaikka() == "poistettu") {
                 return true;
             }
         }
         return false;
     }
 
+    /**
+     * Hakee kortille tallennettujen rivin ja sarakkeen perusteella
+     * alavasemmalla olevan kortin
+     *
+     * @param kortti Tarkasteltava kortti
+     * @return alavasemmalla oleva kortti
+     */
     public Kortti haeAlaVasenKortti(Kortti kortti) {
         int rivi = (kortti.getRivi() + 1);
         int sarake = (kortti.getSarake() - 1);
@@ -43,6 +59,13 @@ public class Pelisaannot {
         return vasenKortti;
     }
 
+    /**
+     * Hakee kortille tallennettujen rivin ja sarakkeen perusteella alaoikealla
+     * olevan kortin
+     *
+     * @param kortti Tarkasteltava kortti
+     * @return alaoikealla oleva kortti
+     */
     public Kortti haeAlaOikeaKortti(Kortti kortti) {
         int rivi = (kortti.getRivi() + 1);
         int sarake = (kortti.getSarake() + 1);

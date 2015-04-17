@@ -42,13 +42,13 @@ public class PelialustaTest {
 
     @Test
     public void pelialustallaOnPakka() {
-        assertEquals(52, this.pakka.TarkistaPakanKoko());
+        assertEquals(52, this.pakka.getPakanKoko());
     }
 
     @Test
     public void asetaKortitPoydallePienentaaKorttipakkaa() {
         alusta.asetaKortitPoydalle();
-        assertEquals(24, this.pakka.TarkistaPakanKoko());
+        assertEquals(24, this.pakka.getPakanKoko());
     }
 
     @Test

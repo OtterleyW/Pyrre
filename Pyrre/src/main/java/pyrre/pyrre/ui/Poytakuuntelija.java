@@ -6,7 +6,7 @@
 package pyrre.pyrre.ui;
 
 /**
- *
+ * 
  * @author Jenni
  */
 import java.awt.Container;
@@ -32,7 +32,6 @@ public class Poytakuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-      
         logiikka.valitsePoydaltaKortti(this.kortti);
         liittyma.paivitaRuutu();
     }
