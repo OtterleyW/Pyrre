@@ -18,12 +18,22 @@ import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.logiikka.Pelilogiikka;
 import pyrre.pyrre.logiikka.Pelisaannot;
 
+/**
+ * Luokka joka reagoi siihen, kun pakasta halutaan valita kortti
+ * @author Jenni
+ */
 public class Poytakuuntelija implements ActionListener {
 
     private Kortti kortti;
     private Pelilogiikka logiikka;
     private Kayttoliittyma liittyma;
     
+    /**
+     * Luo uuden pöytäkuuntelijan
+     * @param kortti Valittu kortti
+     * @param logiikka Pelilogiikka
+     * @param liittyma  Käyttöliittymä
+     */
     public Poytakuuntelija(Kortti kortti, Pelilogiikka logiikka, Kayttoliittyma liittyma) {
         this.kortti = kortti;
         this.logiikka = logiikka;

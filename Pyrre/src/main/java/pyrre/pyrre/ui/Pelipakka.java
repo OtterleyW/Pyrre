@@ -14,11 +14,12 @@ import pyrre.pyrre.logiikka.Pelialusta;
 import pyrre.pyrre.logiikka.Pelilogiikka;
 
 /**
+ * Kuvastaa pelipakkaa käyttöliittymässä
  *
  * @author Jenni
  */
 public class Pelipakka extends JPanel {
-    
+
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
     private Kayttoliittyma kayttoliittyma;
@@ -26,45 +27,62 @@ public class Pelipakka extends JPanel {
     private JButton pakkabutton;
     private Kortti kortti;
 
+    /**
+     * Luo pelipakan
+     *
+     * @param alusta Pelialusta
+     * @param logiikka Pelilogiikka
+     * @param kayttoliittyma Käyttöliittymä
+     */
     public Pelipakka(Pelialusta alusta, Pelilogiikka logiikka, Kayttoliittyma kayttoliittyma) {
         super(new GridLayout(1, 2));
         this.alusta = alusta;
         this.logiikka = logiikka;
         this.kayttoliittyma = kayttoliittyma;
         this.pakka = logiikka.getPelipakka();
-        
+
         luoPakka();
     }
-    
-    public void luoPakka(){
+
+    /**
+     * Luo pelipakkaa kuvastavan JButtonin
+     */
+    public void luoPakka() {
         System.out.println("Luo pakat");
         kortti = pakka.nostaPaalimmainen();
-        
+
         this.pakkabutton = new JButton(kortti.toString());
         this.pakkabutton.addActionListener(new Pakkakuuntelija(this.logiikka, this.kayttoliittyma, this));
         this.pakkabutton.setVisible(true);
         this.add(this.pakkabutton);
-        
+
         JButton selaaKortteja = new JButton("seuraava kortti");
         selaaKortteja.addActionListener(new Pakanselaus(this));
         selaaKortteja.setVisible(true);
         this.add(selaaKortteja);
     }
-    
-    public Kortti getPaalimmainenKortti(){
+
+    public Kortti getPaalimmainenKortti() {
         return this.kortti;
     }
-    
-       public void nostaKortti() {
+
+    /**
+     * Asettaa JButonille uuden kortin tekstin
+     */
+    public void nostaKortti() {
         kortti = pakka.nostaPaalimmainen();
-        this.pakkabutton.setText(kortti.toString()); 
- 
+        this.pakkabutton.setText(kortti.toString());
+
     }
-       
-       public void paivitaRuutu() {
-           if(kortti.getPaikka() == "poistettu"){
-               nostaKortti();
-           }
+
+    /**
+     * Päivittää ruudun siten, että jos kortin paikka on poistettu, nostetaan
+     * uusi kortti
+     */
+    public void paivitaRuutu() {
+        if (kortti.getPaikka() == "poistettu") {
+            nostaKortti();
+        }
     }
 
 }
