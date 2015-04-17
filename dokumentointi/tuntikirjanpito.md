@@ -29,3 +29,9 @@ Graafisen käyttöliittymän jatkamista, nyt peli jo vähän pelattava :) Testej
 
 **15.04.2015** 2,5h
 Korttipakka lisätty graafiseen liittymään ja sen toiminnan säätämistä. Ainakin puoli tuntia myös pelin kliksuttelua, koska se alkaa olla jo ihan pelattava!
+
+**16.04.2015** 2h
+Ilmestyi mysteerinen bugi, jota yritin korjata. Eipä onnnistunut.
+
+**17.04.2015** 4h
+Mysteerinen bugi korjattu, javadoceja kirjoitettu ja pelilogiikan testausta päivitetty ja paranneltu. Lisäksi tehty sekvenssikaavioita ja päivitetty luokkakaavio sekä aihemäärittely ajantasalle. Uusi bugi löydetty.
