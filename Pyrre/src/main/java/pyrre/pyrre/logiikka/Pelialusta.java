@@ -91,17 +91,6 @@ public class Pelialusta {
         return kortti;
     }
 
-    /**
-     * Tulostaa pelipöydän (ei tarpeen graafisen käyttöliittymän jälkeen)
-     */
-    public void tulostaPoyta() {
-        for (int i = 0; i < pelialusta.length; i++) {
-            for (int j = 0; j < pelialusta[i].length; j++) {
-                System.out.print(" " + pelialusta[i][j].toString() + " ");
-            }
-            System.out.println("");
-        }
-    }
 
     public Kortti[][] getPelialusta() {
         return this.pelialusta;
