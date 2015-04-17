@@ -16,7 +16,7 @@ import pyrre.pyrre.logiikka.Pelisaannot;
  */
 public class Pakkakuuntelija implements ActionListener {
 
-    private Kortti kortti;
+    
     private Pelilogiikka logiikka;
     private Kayttoliittyma liittyma;
     private Pelipakka pakka;
@@ -36,11 +36,8 @@ public class Pakkakuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        this.kortti = pakka.getPaalimmainenKortti();
-        if (this.kortti.getArvo() == 13) {
-            pakka.nostaKortti();
-        } else {
-            logiikka.valitsePakastaKortti(this.kortti);
-        }
+        Kortti kortti = pakka.getPaalimmainenKortti();
+        logiikka.valitsePakastaKortti(kortti);
+        liittyma.paivitaRuutu();
     }
 }

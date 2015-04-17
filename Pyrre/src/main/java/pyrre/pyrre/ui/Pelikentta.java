@@ -48,7 +48,7 @@ public class Pelikentta extends JPanel {
         
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
-                JButton button = new JButton(kortit[i][j].toString() + ", " + kortit[i][j].getRivi() + ", " + kortit[i][j].getSarake() + "," + i + "," + j);
+                JButton button = new JButton(kortit[i][j].toString());
                 button.setVisible(false);
                 if (kortit[i][j].getArvo() != 0) {
                     button.addActionListener(new Poytakuuntelija(kortit[i][j], this.logiikka, this.kayttoliittyma));
@@ -71,8 +71,7 @@ public class Pelikentta extends JPanel {
             for (int j = 0; j < 13; j++) {
                 if (kortit[i][j].getPaikka() == "poistettu") {
                     JButton button = buttonit[i][j];
-                    button.setText(kortit[i][j].toString() + kortit[i][j].getRivi() + "," + kortit[i][j].getSarake() + "," + i + "," + j);
-                    button.setBackground(Color.red);
+                    button.setVisible(false);
                 }
                 
             }

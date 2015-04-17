@@ -1,6 +1,5 @@
 package pyrre.pyrre.logiikka;
 
-import java.util.ArrayList;
 import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.kortit.Korttipakka;
 
@@ -11,8 +10,8 @@ import pyrre.pyrre.kortit.Korttipakka;
  */
 public class Pelialusta {
 
-    private Korttipakka pakka;
-    private Kortti[][] pelialusta;
+    private final Korttipakka pakka;
+    private final Kortti[][] pelialusta;
 
     /**
      * Luo uuden pelialustan
@@ -52,19 +51,19 @@ public class Pelialusta {
      * @param i kortin rivi
      * @param j kortin sarake
      */
-    public void asetaKortti(int i, int j) {
+    private void asetaKortti(int i, int j) {
         Kortti kortti = pakka.nostaPaalimmainen();
         pelialusta[i][j] = kortti;
         kortti.asetaPaikkaPoydalla(i, j);
     }
 
     /**
-     * Asettaa tyhjäm kortin pöydälle
+     * Asettaa tyhjän kortin pöydälle
      *
      * @param i kortin rivi
      * @param j kortin sarake
      */
-    public void asetaTyhjaKortti(int i, int j) {
+    private void asetaTyhjaKortti(int i, int j) {
         Kortti kortti = luoTyhjaKortti();
         pelialusta[i][j] = kortti;
     }
@@ -74,7 +73,7 @@ public class Pelialusta {
      *
      * @return tyhjä kortti
      */
-    public Kortti luoTyhjaKortti() {
+    private Kortti luoTyhjaKortti() {
         Kortti tyhja = new Kortti(0, 4);
         tyhja = tyhja.LuoTyhjaKortti();
         return tyhja;

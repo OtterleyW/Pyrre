@@ -55,10 +55,11 @@ public class Korttipakka {
     public Kortti nostaPaalimmainen() {
         if (pakka.size() == 0) {
             for (Kortti kortti : poistopakka) {
-                if (kortti.getPaikka() != "poistettu") {
+                if (kortti.getPaikka() == "pakka") {
                     pakka.add(kortti);
                 }
             }
+            poistopakka.clear();
             System.out.println("Pakka alkaa alusta");
         }
         Kortti kortti = pakka.get(0);
