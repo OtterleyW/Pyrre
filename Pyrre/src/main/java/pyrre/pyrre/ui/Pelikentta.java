@@ -72,6 +72,12 @@ public class Pelikentta extends JPanel {
                 if (kortit[i][j].getPaikka() == "poistettu") {
                     JButton button = buttonit[i][j];
                     button.setVisible(false);
+                    if(i == 0 && j == 6) {
+                        button.setText("Voitit pelin!");
+                        button.setBackground(Color.pink);
+                        button.setVisible(true);
+                    }
+                     
                 }
                 
             }

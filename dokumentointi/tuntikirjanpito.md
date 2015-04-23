@@ -24,7 +24,7 @@ Luokkakaavion muokkaus
 **09.04.2015** 4h?
 Unohtunut tuntikirjanpito, tuntimäärä heitetty hatusta. Kuitenkin graafisen käyttöliittymän aloittelua
 
-*10.04.2015** 2h+1h
+**10.04.2015** 2h+1h
 Graafisen käyttöliittymän jatkamista, nyt peli jo vähän pelattava :) Testejä myös päivitetty vähän.
 
 **15.04.2015** 2,5h

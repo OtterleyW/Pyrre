@@ -131,6 +131,7 @@ public class Pelilogiikka {
      */
     public void poistaValitutKortit() {
         System.out.println(valitut);
+        
         for (Kortti kortti : valitut) {
             kortti.poista();
         }
@@ -142,4 +143,5 @@ public class Pelilogiikka {
     public void tyhjennaValitut() {
         valitut.clear();
     }
+   
 }

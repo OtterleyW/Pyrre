@@ -12,6 +12,7 @@ public class Korttipakka {
 
     private ArrayList<Kortti> pakka = new ArrayList<Kortti>();
     private ArrayList<Kortti> poistopakka = new ArrayList<Kortti>();
+    private int kerrat = 0;
 
     /**
      * Metodi luo korttipakan, joka sisältää yhteensä 52 korttia (13 kutakin
@@ -53,18 +54,25 @@ public class Korttipakka {
      * @return nostettu kortti
      */
     public Kortti nostaPaalimmainen() {
-        if (pakka.size() == 0) {
+        
+        if (pakka.size() == 0 && kerrat < 3) {
             for (Kortti kortti : poistopakka) {
                 if (kortti.getPaikka() == "pakka") {
                     pakka.add(kortti);
                 }
             }
             poistopakka.clear();
-            System.out.println("Pakka alkaa alusta");
+            kerrat++;
+            System.out.println("Pakka alkaa alusta + " + kerrat);
         }
         Kortti kortti = pakka.get(0);
         poistopakka.add(kortti);
         pakka.remove(0);
+        
+        if(kerrat >= 3 && pakka.size()==0){
+            System.out.println("Game Over");
+            kortti.setPaikka("loppu");
+        }
         return kortti;
     }
 

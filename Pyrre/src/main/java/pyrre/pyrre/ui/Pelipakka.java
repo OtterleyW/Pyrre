@@ -5,6 +5,7 @@
  */
 package pyrre.pyrre.ui;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -25,7 +26,9 @@ public class Pelipakka extends JPanel {
     private Kayttoliittyma kayttoliittyma;
     private Korttipakka pakka;
     private JButton pakkabutton;
+    private JButton selaaKortteja;
     private Kortti kortti;
+    private Pakanselaus pakanselaus = new Pakanselaus(this);
 
     /**
      * Luo pelipakan
@@ -56,8 +59,8 @@ public class Pelipakka extends JPanel {
         this.pakkabutton.setVisible(true);
         this.add(this.pakkabutton);
 
-        JButton selaaKortteja = new JButton("seuraava kortti");
-        selaaKortteja.addActionListener(new Pakanselaus(this));
+        selaaKortteja = new JButton("seuraava kortti");
+        selaaKortteja.addActionListener(pakanselaus);
         selaaKortteja.setVisible(true);
         this.add(selaaKortteja);
     }
@@ -71,10 +74,18 @@ public class Pelipakka extends JPanel {
      */
     public void nostaKortti() {
         kortti = pakka.nostaPaalimmainen();
+        if(kortti.getPaikka() == "loppu"){
+            pakkaLoppu();
+        }
         this.pakkabutton.setText(kortti.toString());
 
     }
-
+    
+    public void pakkaLoppu() {
+        selaaKortteja.setText("Kortit loppuivat");
+        selaaKortteja.removeActionListener(pakanselaus);
+        selaaKortteja.setBackground(Color.gray);
+    }
     /**
      * Päivittää ruudun siten, että jos kortin paikka on poistettu, nostetaan
      * uusi kortti
@@ -83,6 +94,7 @@ public class Pelipakka extends JPanel {
         if (kortti.getPaikka() == "poistettu") {
             nostaKortti();
         }
+        
     }
 
 }
