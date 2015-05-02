@@ -22,7 +22,7 @@ import pyrre.pyrre.logiikka.Pelisaannot;
  */
 public class Kayttoliittyma implements Runnable {
     public static final int IKKUNA_LEVEYS = 1200;
-    public static final int IKKUNA_KORKEUS = 600;
+    public static final int IKKUNA_KORKEUS = 880;
     
     private JFrame frame;
     private Pelialusta alusta;
@@ -72,9 +72,9 @@ public class Kayttoliittyma implements Runnable {
         this.korttipakka = luoKorttipakka();
         container.add(this.korttipakka, BorderLayout.SOUTH);
         
-        Insets insets = frame.getInsets();
+        Insets insets = container.getInsets();
         System.out.println(insets);
-        this.pelikentta.setBounds(insets.left, insets.top, IKKUNA_LEVEYS, IKKUNA_KORKEUS - KorttiButton.KORKEUS);
+        this.pelikentta.setBounds(insets.left+(IKKUNA_LEVEYS - Pelikentta.LEVEYS)/2, insets.top, Pelikentta.LEVEYS, Pelikentta.KORKEUS);
         int pakanLeveys = KorttiButton.LEVEYS+Pelipakka.UUSI_KORTTI_LEVEYS;
         this.korttipakka.setBounds(insets.left+(IKKUNA_LEVEYS-pakanLeveys)/2, insets.top + IKKUNA_KORKEUS - KorttiButton.KORKEUS, pakanLeveys , KorttiButton.KORKEUS);
         

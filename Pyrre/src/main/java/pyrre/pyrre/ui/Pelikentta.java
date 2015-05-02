@@ -15,6 +15,8 @@ import pyrre.pyrre.logiikka.Pelilogiikka;
  * @author Jenni
  */
 public class Pelikentta extends JPanel {
+    public static final int KORKEUS = KorttiButton.KORKEUS * 7;
+    public static final int LEVEYS = KorttiButton.LEVEYS * 13;
     
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
