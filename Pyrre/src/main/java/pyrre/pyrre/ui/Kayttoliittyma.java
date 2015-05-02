@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,7 +21,9 @@ import pyrre.pyrre.logiikka.Pelisaannot;
  * @author Jenni
  */
 public class Kayttoliittyma implements Runnable {
-
+    public static final int IKKUNA_LEVEYS = 1200;
+    public static final int IKKUNA_KORKEUS = 600;
+    
     private JFrame frame;
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
@@ -42,15 +45,20 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Pyramidipasianssi");
-        frame.setPreferredSize(new Dimension(1200, 600));
+        frame.setPreferredSize(new Dimension(IKKUNA_LEVEYS, IKKUNA_KORKEUS));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         this.container = frame.getContentPane();
+        container.setLayout(null);
         luoKomponentit(this.container);
 
         frame.pack();
         frame.setVisible(true);
+        
+        Insets insets = frame.getInsets();
+        frame.setSize(IKKUNA_LEVEYS + insets.left + insets.right,
+              IKKUNA_KORKEUS + insets.top + insets.bottom);
     }
 
     /**
@@ -59,12 +67,18 @@ public class Kayttoliittyma implements Runnable {
      * @param container Sisältää komponentit
      */
     private void luoKomponentit(Container container) {
-        JLabel teksti = new JLabel("Pyramidipasianssi");
-        container.add(teksti);
         this.pelikentta = luoPelikentta();
         container.add(this.pelikentta);
         this.korttipakka = luoKorttipakka();
         container.add(this.korttipakka, BorderLayout.SOUTH);
+        
+        Insets insets = frame.getInsets();
+        System.out.println(insets);
+        this.pelikentta.setBounds(insets.left, insets.top, IKKUNA_LEVEYS, IKKUNA_KORKEUS - KorttiButton.KORKEUS);
+        int pakanLeveys = KorttiButton.LEVEYS+Pelipakka.UUSI_KORTTI_LEVEYS;
+        this.korttipakka.setBounds(insets.left+(IKKUNA_LEVEYS-pakanLeveys)/2, insets.top + IKKUNA_KORKEUS - KorttiButton.KORKEUS, pakanLeveys , KorttiButton.KORKEUS);
+        
+        
     }
 
     /**

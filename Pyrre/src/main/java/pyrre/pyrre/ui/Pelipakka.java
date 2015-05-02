@@ -20,7 +20,8 @@ import pyrre.pyrre.logiikka.Pelilogiikka;
  * @author Jenni
  */
 public class Pelipakka extends JPanel {
-
+    public static final int UUSI_KORTTI_LEVEYS = 100;
+            
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
     private Kayttoliittyma kayttoliittyma;
