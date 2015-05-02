@@ -2,8 +2,6 @@ package pyrre.pyrre.ui;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.logiikka.Pelialusta;
@@ -21,7 +19,7 @@ public class Pelikentta extends JPanel {
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
     private Kayttoliittyma kayttoliittyma;
-    private JButton[][] buttonit;
+    private KorttiButton[][] buttonit;
     private Kortti[][] kortit;
 
     /**
@@ -37,20 +35,20 @@ public class Pelikentta extends JPanel {
         this.logiikka = logiikka;
         this.kayttoliittyma = kayttoliittyma;
         this.kortit = alusta.getPelialusta();
-        this.buttonit = new JButton[7][13];
+        this.buttonit = new KorttiButton[7][13];
         
         this.luoButtonit();
     }
 
     /**
-     * Luo pelikentälle JButtonit, jotka edustavat pelissä olevia kortteja
+     * Luo pelikentälle KorttiButtonit, jotka edustavat pelissä olevia kortteja
      */
     private void luoButtonit() {
         System.out.println("Luo buttonit");
         
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
-                JButton button = new JButton(kortit[i][j].toString());
+                KorttiButton button = new KorttiButton(kortit[i][j].toString());
                 button.setVisible(false);
                 if (kortit[i][j].getArvo() != 0) {
                     button.addActionListener(new Poytakuuntelija(kortit[i][j], this.logiikka, this.kayttoliittyma));
@@ -66,13 +64,13 @@ public class Pelikentta extends JPanel {
     }
     
     /**
-     * Päivittää kentällä olevat JButtonit siten, että kortit, joiden paikka on "poistettu" piilotetaan
+     * Päivittää kentällä olevat KorttiButtonit siten, että kortit, joiden paikka on "poistettu" piilotetaan
      */
     public void paivitaButtonit() {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
                 if (kortit[i][j].getPaikka() == "poistettu") {
-                    JButton button = buttonit[i][j];
+                    KorttiButton button = buttonit[i][j];
                     button.setVisible(false);
                     if(i == 0 && j == 6) {
                         button.setText("Voitit pelin!");

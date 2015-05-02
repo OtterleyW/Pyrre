@@ -26,7 +26,7 @@ public class Pelipakka extends JPanel {
     private Pelilogiikka logiikka;
     private Kayttoliittyma kayttoliittyma;
     private Korttipakka pakka;
-    private JButton pakkabutton;
+    private KorttiButton pakkabutton;
     private JButton selaaKortteja;
     private Kortti kortti;
     private Pakanselaus pakanselaus = new Pakanselaus(this);
@@ -55,7 +55,7 @@ public class Pelipakka extends JPanel {
         System.out.println("Luo pakat");
         kortti = pakka.nostaPaalimmainen();
 
-        this.pakkabutton = new JButton(kortti.toString());
+        this.pakkabutton = new KorttiButton(kortti.toString());
         this.pakkabutton.addActionListener(new Pakkakuuntelija(this.logiikka, this.kayttoliittyma, this));
         this.pakkabutton.setVisible(true);
         this.add(this.pakkabutton);

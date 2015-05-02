@@ -5,12 +5,18 @@
  */
 package pyrre.pyrre.ui;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Jenni
  */
-public class KorttiButton {
+public class KorttiButton extends JButton {
     public static final int KORKEUS = 100;
     public static final int LEVEYS = 75;
+
+    public KorttiButton(String teksti) {
+        super(teksti);
+    }
     
 }
