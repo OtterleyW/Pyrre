@@ -6,7 +6,9 @@
 package pyrre.pyrre.ui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import pyrre.pyrre.kortit.Kortti;
@@ -19,9 +21,7 @@ import pyrre.pyrre.logiikka.Pelilogiikka;
  *
  * @author Jenni
  */
-public class Pelipakka extends JPanel {
-    public static final int UUSI_KORTTI_LEVEYS = 100;
-            
+public class Pelipakka extends JPanel {          
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
     private Kayttoliittyma kayttoliittyma;
@@ -39,20 +39,19 @@ public class Pelipakka extends JPanel {
      * @param kayttoliittyma Käyttöliittymä
      */
     public Pelipakka(Pelialusta alusta, Pelilogiikka logiikka, Kayttoliittyma kayttoliittyma) {
-        super(new GridLayout(1, 2));
+        super();
+        this.setLayout(null);
         this.alusta = alusta;
         this.logiikka = logiikka;
         this.kayttoliittyma = kayttoliittyma;
         this.pakka = logiikka.getPelipakka();
-
-        luoPakka();
+        this.setBackground(Color.green);
     }
 
     /**
      * Luo pelipakkaa kuvastavan JButtonin
      */
     public void luoPakka() {
-        System.out.println("Luo pakat");
         kortti = pakka.nostaPaalimmainen();
 
         this.pakkabutton = new KorttiButton(kortti.toString());
@@ -64,6 +63,13 @@ public class Pelipakka extends JPanel {
         selaaKortteja.addActionListener(pakanselaus);
         selaaKortteja.setVisible(true);
         this.add(selaaKortteja);
+        
+        Insets insets = this.getInsets();
+        Dimension size = selaaKortteja.getPreferredSize();
+        int vali = 10;
+        int kokoLeveys = pakkabutton.getWidth() + size.width + vali;
+        pakkabutton.setBounds(insets.left+(this.getWidth()-kokoLeveys)/2, insets.top, pakkabutton.getWidth(), pakkabutton.getHeight());
+        selaaKortteja.setBounds(insets.left+(this.getWidth()-kokoLeveys)/2+pakkabutton.getWidth()+ vali, insets.top + (pakkabutton.getHeight()-size.height)/2, size.width, size.height);
     }
 
     public Kortti getPaalimmainenKortti() {

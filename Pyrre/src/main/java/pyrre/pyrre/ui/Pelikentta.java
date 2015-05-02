@@ -38,6 +38,7 @@ public class Pelikentta extends JPanel {
         this.buttonit = new KorttiButton[7][13];
         
         this.luoButtonit();
+        this.setBackground(Color.pink);
     }
 
     /**

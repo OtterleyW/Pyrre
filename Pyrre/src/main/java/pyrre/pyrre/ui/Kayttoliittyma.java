@@ -75,8 +75,9 @@ public class Kayttoliittyma implements Runnable {
         Insets insets = container.getInsets();
         System.out.println(insets);
         this.pelikentta.setBounds(insets.left+(IKKUNA_LEVEYS - Pelikentta.LEVEYS)/2, insets.top, Pelikentta.LEVEYS, Pelikentta.KORKEUS);
-        int pakanLeveys = KorttiButton.LEVEYS+Pelipakka.UUSI_KORTTI_LEVEYS;
-        this.korttipakka.setBounds(insets.left+(IKKUNA_LEVEYS-pakanLeveys)/2, insets.top + IKKUNA_KORKEUS - KorttiButton.KORKEUS, pakanLeveys , KorttiButton.KORKEUS);
+        this.korttipakka.setBounds(insets.left+(IKKUNA_LEVEYS - Pelikentta.LEVEYS)/2, insets.top + IKKUNA_KORKEUS - KorttiButton.KORKEUS, Pelikentta.LEVEYS , KorttiButton.KORKEUS);
+        
+        this.korttipakka.luoPakka();
         
         
     }

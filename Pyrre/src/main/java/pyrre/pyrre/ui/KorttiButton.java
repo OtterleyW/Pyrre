@@ -17,6 +17,7 @@ public class KorttiButton extends JButton {
 
     public KorttiButton(String teksti) {
         super(teksti);
+        this.setSize(LEVEYS, KORKEUS);
     }
     
 }
