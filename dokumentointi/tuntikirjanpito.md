@@ -45,5 +45,5 @@ Pelin demous.
 **29.04.2015** ~1h
 Koodikatselmoinnin kirjoittaminen, yhden bugin korjaaminen
 
-**2.5.2015** 2h
-Graafisen käyttöliittymän muokkaamista
+**2.5.2015** 5h
+Graafisen käyttöliittymän muokkaamista (esim. korttien kuvat)
