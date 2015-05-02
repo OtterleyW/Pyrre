@@ -45,7 +45,7 @@ public class Pelipakka extends JPanel {
         this.logiikka = logiikka;
         this.kayttoliittyma = kayttoliittyma;
         this.pakka = logiikka.getPelipakka();
-        this.setBackground(Color.green);
+        this.setOpaque(false);
     }
 
     /**
@@ -96,6 +96,7 @@ public class Pelipakka extends JPanel {
         selaaKortteja.setText("Kortit loppuivat");
         selaaKortteja.removeActionListener(pakanselaus);
         selaaKortteja.setBackground(Color.gray);
+        kayttoliittyma.havisitPelin();
     }
 
     /**

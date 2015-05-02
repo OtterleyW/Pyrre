@@ -1,6 +1,7 @@
 package pyrre.pyrre.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -8,6 +9,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import pyrre.pyrre.kortit.Kortti;
@@ -22,7 +24,7 @@ import pyrre.pyrre.logiikka.Pelisaannot;
  */
 public class Kayttoliittyma implements Runnable {
     public static final int IKKUNA_LEVEYS = 1200;
-    public static final int IKKUNA_KORKEUS = 880;
+    public static final int IKKUNA_KORKEUS = 850;
     
     private JFrame frame;
     private Pelialusta alusta;
@@ -73,11 +75,12 @@ public class Kayttoliittyma implements Runnable {
         container.add(this.korttipakka, BorderLayout.SOUTH);
         
         Insets insets = container.getInsets();
-        System.out.println(insets);
         this.pelikentta.setBounds(insets.left+(IKKUNA_LEVEYS - Pelikentta.LEVEYS)/2, insets.top, Pelikentta.LEVEYS, Pelikentta.KORKEUS);
         this.korttipakka.setBounds(insets.left+(IKKUNA_LEVEYS - Pelikentta.LEVEYS)/2, insets.top + IKKUNA_KORKEUS - KorttiButton.KORKEUS, Pelikentta.LEVEYS , KorttiButton.KORKEUS);
         
         this.korttipakka.luoPakka();
+        
+        container.setBackground(Color.getHSBColor(0.4f, 0.5f, 0.4f));
         
         
     }
@@ -113,5 +116,31 @@ public class Kayttoliittyma implements Runnable {
 
     public JFrame getFrame() {
         return frame;
+    }
+    
+    public void voititPelin() {
+        Object[] options = {"Lopeta peli"};
+        JOptionPane.showOptionDialog(frame,
+                "Voitit pelin",
+                "Peli loppui",
+                JOptionPane.OK_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        frame.dispose();
+    }
+    
+    public void havisitPelin(){
+        Object[] options = {"Lopeta peli"};
+        JOptionPane.showOptionDialog(frame,
+                "Hävisit pelin",
+                "Peli loppui",
+                JOptionPane.OK_OPTION,
+                JOptionPane.ERROR_MESSAGE,
+                null,
+                options,
+                options[0]);
+        frame.dispose();
     }
 }

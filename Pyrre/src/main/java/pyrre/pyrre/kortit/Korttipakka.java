@@ -70,7 +70,6 @@ public class Korttipakka {
         pakka.remove(0);
         
         if(kerrat >= 3 && pakka.size()==0){
-            System.out.println("Game Over");
             kortti.setPaikka("loppu");
         }
         return kortti;

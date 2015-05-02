@@ -38,7 +38,7 @@ public class Pelikentta extends JPanel {
         this.buttonit = new KorttiButton[7][13];
         
         this.luoButtonit();
-        this.setBackground(Color.pink);
+        this.setOpaque(false);
     }
 
     /**
@@ -74,9 +74,7 @@ public class Pelikentta extends JPanel {
                     KorttiButton button = buttonit[i][j];
                     button.setVisible(false);
                     if(i == 0 && j == 6) {
-                        button.setText("Voitit pelin!");
-                        button.setBackground(Color.pink);
-                        button.setVisible(true);
+                        kayttoliittyma.voititPelin();
                     }
                      
                 }
