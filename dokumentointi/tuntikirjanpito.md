@@ -35,3 +35,6 @@ Ilmestyi mysteerinen bugi, jota yritin korjata. Eipä onnnistunut.
 
 **17.04.2015** 4h
 Mysteerinen bugi korjattu, javadoceja kirjoitettu ja pelilogiikan testausta päivitetty ja paranneltu. Lisäksi tehty sekvenssikaavioita ja päivitetty luokkakaavio sekä aihemäärittely ajantasalle. Uusi bugi löydetty.
+
+**23.04.2015** 1,5h
+Muokattu peliä niin, että korttipakan voi selata läpi vain kolmesti. Ilmoitus pelin läpäisystä myös lisätty. Bugeja ei vielä korjattu.

@@ -95,10 +95,10 @@ public class Pelilogiikka {
             valitut.add(kortti);
 
             if (kortti.getArvo() == 13) {
-                poistaValitutKortit();
+                poistaVikaValittuKortti();
                 tyhjennaValitut();
             }
-
+            
             if (getValittujenMaara() == 2) {
                 int summa = laskeValitutYhteen();
                 if (summa == 13) {
@@ -135,6 +135,10 @@ public class Pelilogiikka {
         for (Kortti kortti : valitut) {
             kortti.poista();
         }
+    }
+    
+    private void poistaVikaValittuKortti() {
+        valitut.get(valitut.size() - 1).poista();
     }
 
     /**

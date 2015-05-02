@@ -74,18 +74,23 @@ public class Pelipakka extends JPanel {
      */
     public void nostaKortti() {
         kortti = pakka.nostaPaalimmainen();
-        if(kortti.getPaikka() == "loppu"){
+        if (kortti.getPaikka() == "loppu") {
             pakkaLoppu();
         }
         this.pakkabutton.setText(kortti.toString());
 
     }
-    
+
+    /**
+     * Kun korttipakkaa on selattu sallitut kerrat, poistetaan pakan selaus
+     * käytöstä.
+     */
     public void pakkaLoppu() {
         selaaKortteja.setText("Kortit loppuivat");
         selaaKortteja.removeActionListener(pakanselaus);
         selaaKortteja.setBackground(Color.gray);
     }
+
     /**
      * Päivittää ruudun siten, että jos kortin paikka on poistettu, nostetaan
      * uusi kortti
@@ -94,7 +99,7 @@ public class Pelipakka extends JPanel {
         if (kortti.getPaikka() == "poistettu") {
             nostaKortti();
         }
-        
+
     }
 
 }
