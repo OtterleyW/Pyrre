@@ -49,7 +49,7 @@ public class Pelikentta extends JPanel {
         
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
-                KorttiButton button = new KorttiButton(kortit[i][j].toString());
+                KorttiButton button = new KorttiButton(kortit[i][j]);
                 button.setVisible(false);
                 if (kortit[i][j].getArvo() != 0) {
                     button.addActionListener(new Poytakuuntelija(kortit[i][j], this.logiikka, this.kayttoliittyma));

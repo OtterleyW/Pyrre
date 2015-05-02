@@ -54,7 +54,7 @@ public class Pelipakka extends JPanel {
     public void luoPakka() {
         kortti = pakka.nostaPaalimmainen();
 
-        this.pakkabutton = new KorttiButton(kortti.toString());
+        this.pakkabutton = new KorttiButton(kortti);
         this.pakkabutton.addActionListener(new Pakkakuuntelija(this.logiikka, this.kayttoliittyma, this));
         this.pakkabutton.setVisible(true);
         this.add(this.pakkabutton);
@@ -84,7 +84,7 @@ public class Pelipakka extends JPanel {
         if (kortti.getPaikka() == "loppu") {
             pakkaLoppu();
         }
-        this.pakkabutton.setText(kortti.toString());
+        this.pakkabutton.setKuva(kortti);
 
     }
 

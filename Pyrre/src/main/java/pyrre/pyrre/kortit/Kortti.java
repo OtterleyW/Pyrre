@@ -20,7 +20,7 @@ public class Kortti {
 
     public static final String[] MAAT = {" Risti", " Ruutu", "Hertta", "  Pata", "     "};
     public static final String[] ARVOT = {"  ", "A ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "10", "J ", "Q ", "K "};
-
+   
     private int arvo;
     private int maa;
     private String paikka;
