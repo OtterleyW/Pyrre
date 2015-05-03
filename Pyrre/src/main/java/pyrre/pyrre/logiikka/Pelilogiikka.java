@@ -91,7 +91,6 @@ public class Pelilogiikka {
      * @param kortti Valittu kortti
      */
     public void valitseKortti(Kortti kortti) {
-        if (valitut.size() < 2) {
             valitut.add(kortti);
 
             if (kortti.getArvo() == 13) {
@@ -106,7 +105,6 @@ public class Pelilogiikka {
                 }
                 tyhjennaValitut();
             }
-        }
     }
 
     public int getValittujenMaara() {
@@ -130,8 +128,6 @@ public class Pelilogiikka {
      * Muuttaa valittujen korttien paikaksi "poistettu"
      */
     public void poistaValitutKortit() {
-        System.out.println(valitut);
-        
         for (Kortti kortti : valitut) {
             kortti.poista();
         }

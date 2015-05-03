@@ -16,6 +16,7 @@ import javax.swing.border.Border;
 import pyrre.pyrre.kortit.Kortti;
 
 /**
+ * JButton, joka on erikoistunut näyttämään kortteja
  *
  * @author Jenni
  */
@@ -29,6 +30,12 @@ public class KorttiButton extends JButton {
 
     private ImageIcon kuva;
 
+    /**
+     * Luo uuden KorttiButtonin, jolle asetetaan kortin leveys, korkeus ja
+     * haluttu kuva
+     *
+     * @param kortti näytettävä kortti
+     */
     public KorttiButton(Kortti kortti) {
         super();
         this.setSize(LEVEYS, KORKEUS);
@@ -43,9 +50,13 @@ public class KorttiButton extends JButton {
         String arvo = ARVOT_IMG[kortti.getArvo()];
         return arvo + "_of_" + maa;
     }
-    
-    public void setKuva(Kortti kortti){
-         if (kortti.getArvo() != 0) {
+
+    /**
+     * Asettaa kortin maan ja arvon perusteella oikean kuvan näkyviin
+     * @param kortti näytettävä kortti
+     */
+    public void setKuva(Kortti kortti) {
+        if (kortti.getArvo() != 0) {
             try {
                 String polku = "/kuvat/cards/" + kortinNimi(kortti) + ".png";
                 URL tiedostoUrl = KorttiButton.class.getResource(polku);
@@ -56,15 +67,17 @@ public class KorttiButton extends JButton {
             }
         }
     }
-    
+
+    /**
+     * Jos kortti on valittu pelissä, korostetaan kortti
+     * @param onValittu boolean onko kortti valittu
+     */
     public void asetaValituksi(boolean onValittu) {
         if (onValittu) {
             this.setBorder(BorderFactory.createLineBorder(Color.red, 3));
-        }
-        else {
+        } else {
             this.setBorder(null);
         }
     }
-    
- 
+
 }

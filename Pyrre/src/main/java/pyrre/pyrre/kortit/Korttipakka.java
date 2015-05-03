@@ -54,7 +54,6 @@ public class Korttipakka {
      * @return nostettu kortti
      */
     public Kortti nostaPaalimmainen() {
-        
         if (pakka.size() == 0 && kerrat < 3) {
             for (Kortti kortti : poistopakka) {
                 if (kortti.getPaikka() == "pakka") {
@@ -63,16 +62,26 @@ public class Korttipakka {
             }
             poistopakka.clear();
             kerrat++;
-            System.out.println("Pakka alkaa alusta + " + kerrat);
         }
-        Kortti kortti = pakka.get(0);
-        poistopakka.add(kortti);
-        pakka.remove(0);
-        
-        if(kerrat >= 3 && pakka.size()==0){
-            kortti.setPaikka("loppu");
+
+        if (pakka.size() > 0) {
+            Kortti kortti = pakka.get(0);
+            poistopakka.add(kortti);
+            pakka.remove(0);
+            if (kerrat >= 3 && pakka.size() == 0) {
+                kortti.setPaikka("loppu");
+            }
+            return kortti;
         }
-        return kortti;
+
+        return null;
     }
 
+    public int getKerrat() {
+        return kerrat;
+    }
+
+    public void setKerrat(int i) {
+        this.kerrat = i;
+    }
 }

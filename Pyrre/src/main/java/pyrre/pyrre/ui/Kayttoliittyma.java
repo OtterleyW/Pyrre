@@ -24,9 +24,10 @@ import pyrre.pyrre.logiikka.Pelisaannot;
  * @author Jenni
  */
 public class Kayttoliittyma implements Runnable {
+
     public static final int IKKUNA_LEVEYS = 900;
     public static final int IKKUNA_KORKEUS = 768;
-    
+
     private JFrame frame;
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
@@ -58,10 +59,10 @@ public class Kayttoliittyma implements Runnable {
 
         frame.pack();
         frame.setVisible(true);
-        
+
         Insets insets = frame.getInsets();
         frame.setSize(IKKUNA_LEVEYS + insets.left + insets.right,
-              IKKUNA_KORKEUS + insets.top + insets.bottom);
+                IKKUNA_KORKEUS + insets.top + insets.bottom);
     }
 
     /**
@@ -74,16 +75,15 @@ public class Kayttoliittyma implements Runnable {
         container.add(this.pelikentta);
         this.korttipakka = luoKorttipakka();
         container.add(this.korttipakka, BorderLayout.SOUTH);
-        
+
         Insets insets = container.getInsets();
-        this.pelikentta.setBounds(insets.left+(IKKUNA_LEVEYS - Pelikentta.LEVEYS)/2, insets.top, Pelikentta.LEVEYS, Pelikentta.KORKEUS);
-        this.korttipakka.setBounds(insets.left+(IKKUNA_LEVEYS - Pelikentta.LEVEYS)/2, insets.top + IKKUNA_KORKEUS - KorttiButton.KORKEUS, Pelikentta.LEVEYS , KorttiButton.KORKEUS);
-        
+        this.pelikentta.setBounds(insets.left + (IKKUNA_LEVEYS - Pelikentta.LEVEYS) / 2, insets.top, Pelikentta.LEVEYS, Pelikentta.KORKEUS);
+        this.korttipakka.setBounds(insets.left + (IKKUNA_LEVEYS - Pelikentta.LEVEYS) / 2, insets.top + IKKUNA_KORKEUS - KorttiButton.KORKEUS, Pelikentta.LEVEYS, KorttiButton.KORKEUS);
+
         this.korttipakka.luoPakka();
-        
+
         container.setBackground(Color.getHSBColor(0.4f, 0.5f, 0.4f));
-        
-        
+
     }
 
     /**
@@ -118,7 +118,11 @@ public class Kayttoliittyma implements Runnable {
     public JFrame getFrame() {
         return frame;
     }
-    
+
+    /**
+     * Ilmoittaa, että peli on voitettu ja kysyy halutaanko aloittaa uusi peli
+     * vai lopettaa
+     */
     public void voititPelin() {
         Object[] options = {"Aloita uusi peli", "Lopeta peli"};
         int valinta = JOptionPane.showOptionDialog(frame,
@@ -134,8 +138,12 @@ public class Kayttoliittyma implements Runnable {
             Paaohjelma.aloitaUusiPeli();
         }
     }
-    
-    public void havisitPelin(){
+
+    /**
+     * Ilmoittaa, että peli on hävitty ja kysyy halutaanko aloittaa uusi peli
+     * vai lopettaa
+     */
+    public void havisitPelin() {
         Object[] options = {"Aloita uusi peli", "Lopeta peli"};
         int valinta = JOptionPane.showOptionDialog(frame,
                 "Hävisit pelin",
