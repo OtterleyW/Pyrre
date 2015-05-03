@@ -24,8 +24,8 @@ import pyrre.pyrre.logiikka.Pelisaannot;
  * @author Jenni
  */
 public class Kayttoliittyma implements Runnable {
-    public static final int IKKUNA_LEVEYS = 1200;
-    public static final int IKKUNA_KORKEUS = 850;
+    public static final int IKKUNA_LEVEYS = 900;
+    public static final int IKKUNA_KORKEUS = 768;
     
     private JFrame frame;
     private Pelialusta alusta;

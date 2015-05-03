@@ -2,6 +2,7 @@ package pyrre.pyrre.ui;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import javax.swing.JPanel;
 import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.logiikka.Pelialusta;
@@ -13,8 +14,8 @@ import pyrre.pyrre.logiikka.Pelilogiikka;
  * @author Jenni
  */
 public class Pelikentta extends JPanel {
-    public static final int KORKEUS = KorttiButton.KORKEUS * 7;
-    public static final int LEVEYS = KorttiButton.LEVEYS * 13;
+    public static final int KORKEUS = Math.round(KorttiButton.KORKEUS * 7 * 0.8f + (KorttiButton.KORKEUS - (KorttiButton.KORKEUS * 0.8f)));
+    public static final int LEVEYS = Math.round(KorttiButton.LEVEYS * 13 * 0.8f + (KorttiButton.LEVEYS - (KorttiButton.LEVEYS * 0.8f)));
     
     private Pelialusta alusta;
     private Pelilogiikka logiikka;
@@ -30,7 +31,8 @@ public class Pelikentta extends JPanel {
      * @param kayttoliittyma Käyttöliittymä
      */
     public Pelikentta(Pelialusta alusta, Pelilogiikka logiikka, Kayttoliittyma kayttoliittyma) {
-        super(new GridLayout(7, 13));
+        super();
+        this.setLayout(null);
         this.alusta = alusta;
         this.logiikka = logiikka;
         this.kayttoliittyma = kayttoliittyma;
@@ -57,10 +59,17 @@ public class Pelikentta extends JPanel {
                 }
                 buttonit[i][j] = button;
                 this.add(button);
+                this.setComponentZOrder(button, 0);
+                int y = Math.round((KorttiButton.KORKEUS*i*0.8f));
+                int x = Math.round((KorttiButton.LEVEYS*j*0.8f));
                 
+                Insets insets = this.getInsets();
+                button.setBounds(insets.left+x, insets.top+y, KorttiButton.LEVEYS, KorttiButton.KORKEUS);
             }
             
         }
+        
+        this.validate();
         
     }
     
@@ -88,5 +97,10 @@ public class Pelikentta extends JPanel {
      */
     public void paivitaRuutu() {
         paivitaButtonit();
+    }
+    
+    @Override
+    public boolean isOptimizedDrawingEnabled() {
+        return false;
     }
 }
