@@ -35,6 +35,15 @@ public class Paaohjelma {
         
 
     }
+    
+    public static void aloitaUusiPeli() {
+        Pelilogiikka peli = new Pelilogiikka();
+        peli.pelinKaynnistys();
+        Pelialusta alusta = peli.getPelialusta();
+        
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(alusta, peli);
+        SwingUtilities.invokeLater(kayttoliittyma);
+    }
 
   
 }

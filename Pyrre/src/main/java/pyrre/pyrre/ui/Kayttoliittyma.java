@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import pyrre.pyrre.Paaohjelma;
 import pyrre.pyrre.kortit.Kortti;
 import pyrre.pyrre.logiikka.Pelialusta;
 import pyrre.pyrre.logiikka.Pelilogiikka;
@@ -119,8 +120,8 @@ public class Kayttoliittyma implements Runnable {
     }
     
     public void voititPelin() {
-        Object[] options = {"Lopeta peli"};
-        JOptionPane.showOptionDialog(frame,
+        Object[] options = {"Aloita uusi peli", "Lopeta peli"};
+        int valinta = JOptionPane.showOptionDialog(frame,
                 "Voitit pelin",
                 "Peli loppui",
                 JOptionPane.OK_OPTION,
@@ -129,11 +130,14 @@ public class Kayttoliittyma implements Runnable {
                 options,
                 options[0]);
         frame.dispose();
+        if (valinta == 0) {
+            Paaohjelma.aloitaUusiPeli();
+        }
     }
     
     public void havisitPelin(){
-        Object[] options = {"Lopeta peli"};
-        JOptionPane.showOptionDialog(frame,
+        Object[] options = {"Aloita uusi peli", "Lopeta peli"};
+        int valinta = JOptionPane.showOptionDialog(frame,
                 "Hävisit pelin",
                 "Peli loppui",
                 JOptionPane.OK_OPTION,
@@ -142,5 +146,8 @@ public class Kayttoliittyma implements Runnable {
                 options,
                 options[0]);
         frame.dispose();
+        if (valinta == 0) {
+            Paaohjelma.aloitaUusiPeli();
+        }
     }
 }
