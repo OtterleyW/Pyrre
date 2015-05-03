@@ -12,7 +12,7 @@ public class Korttipakka {
 
     private ArrayList<Kortti> pakka = new ArrayList<Kortti>();
     private ArrayList<Kortti> poistopakka = new ArrayList<Kortti>();
-    private int kerrat = 0;
+    private int kerrat = 1;
 
     /**
      * Metodi luo korttipakan, joka sisältää yhteensä 52 korttia (13 kutakin
