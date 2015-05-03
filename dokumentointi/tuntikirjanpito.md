@@ -48,5 +48,5 @@ Koodikatselmoinnin kirjoittaminen, yhden bugin korjaaminen
 **2.5.2015** 5h
 Graafisen käyttöliittymän muokkaamista (esim. korttien kuvat)
 
-**3.5.2015** 3h
-Graafisen käyttöliittymän ja testien viimeistelyä. Pelin uudelleen käynnistäminen pelin päättyessä. 
+**3.5.2015** 4h
+Graafisen käyttöliittymän ja testien viimeistelyä. Pelin uudelleen käynnistäminen pelin päättyessä. Dokumentaatio ajantasalle.
