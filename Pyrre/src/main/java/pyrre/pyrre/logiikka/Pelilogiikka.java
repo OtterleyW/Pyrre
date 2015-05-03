@@ -147,5 +147,15 @@ public class Pelilogiikka {
     public void tyhjennaValitut() {
         valitut.clear();
     }
+    
+    /**
+     * Tarkistaa, onko annettu kortti valittujen korttien joukossa.
+     * 
+     * @param kortti Tarkistettava Kortti
+     * @return true, mikäli kortti oli valittu, false muutoin.
+     */
+    public boolean onkoKorttiValittu(Kortti kortti) {
+        return valitut.contains(kortti);
+    }
    
 }

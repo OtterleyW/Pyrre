@@ -30,5 +30,6 @@ public class Pakanselaus implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         pakka.nostaKortti();
+        pakka.paivitaRuutu();
     }
 }

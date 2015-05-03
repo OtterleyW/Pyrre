@@ -5,11 +5,14 @@
  */
 package pyrre.pyrre.ui;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.border.Border;
 import pyrre.pyrre.kortit.Kortti;
 
 /**
@@ -29,6 +32,7 @@ public class KorttiButton extends JButton {
     public KorttiButton(Kortti kortti) {
         super();
         this.setSize(LEVEYS, KORKEUS);
+        this.setBorder(null);
 
         setKuva(kortti);
 
@@ -50,6 +54,15 @@ public class KorttiButton extends JButton {
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
+        }
+    }
+    
+    public void asetaValituksi(boolean onValittu) {
+        if (onValittu) {
+            this.setBorder(BorderFactory.createLineBorder(Color.red, 3));
+        }
+        else {
+            this.setBorder(null);
         }
     }
     

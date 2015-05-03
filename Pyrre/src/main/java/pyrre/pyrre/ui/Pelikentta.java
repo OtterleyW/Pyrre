@@ -79,15 +79,20 @@ public class Pelikentta extends JPanel {
     public void paivitaButtonit() {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 13; j++) {
-                if (kortit[i][j].getPaikka() == "poistettu") {
-                    KorttiButton button = buttonit[i][j];
+                KorttiButton button = buttonit[i][j];
+                Kortti kortti = kortit[i][j];
+                if (kortti.getPaikka() == "poistettu") {
                     button.setVisible(false);
                     if(i == 0 && j == 6) {
                         kayttoliittyma.voititPelin();
                     }
-                     
                 }
-                
+                if (logiikka.onkoKorttiValittu(kortti)) {
+                    button.asetaValituksi(true);
+                }
+                else {
+                    button.asetaValituksi(false);
+                }
             }
         }
     }

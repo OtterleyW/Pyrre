@@ -107,6 +107,13 @@ public class Pelipakka extends JPanel {
         if (kortti.getPaikka() == "poistettu") {
             nostaKortti();
         }
+        
+        if (logiikka.onkoKorttiValittu(kortti)) {
+            pakkabutton.asetaValituksi(true);
+        }
+        else {
+            pakkabutton.asetaValituksi(false);
+        }
 
     }
 
